@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\HospitalCostController;
 use App\Http\Controllers\Admin\InpatientController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -80,17 +82,9 @@ Route::get('/appoinment', function () {
     ]);
 });
 
-Route::get('/login', function () {
-    return view('auth/login',[
-        "tittle" => "Login"
-    ]);
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 
-Route::get('/register', function () {
-    return view('auth/register',[
-        "tittle" => "Register"
-    ]);
-});
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 
 Route::get('/profile', function () {
     return view('user/profile',[
