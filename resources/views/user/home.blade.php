@@ -1,5 +1,5 @@
 @extends('user.layouts.index')
-@section(section: 'container')
+@section('container')
 <section class="banner">
 	<div class="container">
 		<div class="row">
@@ -31,7 +31,7 @@
 						<p class="mb-4">Providing seamless online services for your convenience anytime, anywhere.</p>
 						<a href="/room" class="btn btn-main btn-round-full">Book a Room</a>
 					</div>
-				
+
 					<div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
 							<i class="icofont-ui-clock"></i>
@@ -44,7 +44,7 @@
 		                    <li class="d-flex justify-content-between">Sat - sun : <span>10:00 - 17:00</span></li>
 		                </ul>
 					</div>
-				
+
 					<div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
 							<i class="icofont-support"></i>
@@ -215,7 +215,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-btm py-4 mt-5">
 			<div class="row align-items-center justify-content-between">
 				<div class="col-lg-6">
