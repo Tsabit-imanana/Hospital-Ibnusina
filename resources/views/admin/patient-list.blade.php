@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Ibnu Sina</title>
-    
+
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
@@ -206,7 +206,7 @@
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <h4 class="box-title">Patient List</h4>
                             <button type="button" class="btn btn-sm btn-success">
-                                <i class="fa fa-plus"></i> Add 
+                                <i class="fa fa-plus"></i> Add
                             </button>
                         </div>
                         <div class="card-body--">

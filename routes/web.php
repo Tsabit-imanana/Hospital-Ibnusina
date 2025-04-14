@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HealthRecordsController;
+use App\Http\Controllers\Admin\HospitalCostController;
+use App\Http\Controllers\Admin\InpatientController;
+use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\RoomController;
 use Illuminate\Support\Facades\Route;
 
@@ -96,32 +100,13 @@ Route::get('/profile', function () {
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/patient-list', function () {
-    return view('admin/patient-list',[
-        "tittle" => "Patient List"
-    ]);
-});
-Route::get('/detail-rooms', function () {
-    return view('admin/detail-rooms',[
-        "tittle" => "Detail Rooms"
-    ]);
-});
+Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patient.index');
 
-Route::get('/admin/room', [RoomController::class, 'index'])->name('admin.room');
+Route::get('/admin/room', [RoomController::class, 'index'])->name('admin.room.index');
 
-Route::get('/inpatient-list', function () {
-    return view('admin/inpatient-list',[
-        "tittle" => "Detail Rooms"
-    ]);
-});
-Route::get('/health-records', function () {
-    return view('admin/health-records',[
-        "tittle" => "Health Records"
-    ]);
-});
-Route::get('/hospital-cost', function () {
-    return view('admin/hospital-cost',[
-        "tittle" => "Hospital Cost"
-    ]);
-});
+Route::get('/admin/inpatient', [InpatientController::class, 'index'])->name('admin.inpatient.index');
+
+Route::get('/admin/health-records', [HealthRecordsController::class, 'index'])->name('admin.health-record.index');
+
+Route::get('/admin/hospital-cost', [HospitalCostController::class, 'index'])->name('admin.hospital-cost.index');
 

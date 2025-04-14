@@ -1,5 +1,5 @@
 @extends('admin.layouts.index')
-@section('title', 'Inpatient List')
+@section('title', 'Room List')
 @section('content')
     <div class="content">
         <!-- Animated -->
@@ -10,7 +10,7 @@
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h4 class="box-title">Inpatient List</h4>
+                        <h4 class="box-title">Hospital Cost</h4>
                         <button type="button" class="btn btn-sm btn-success">
                             <i class="fa fa-plus"></i> Add
                         </button>
@@ -22,9 +22,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Patient Name</th>
-                                        <th>Date In</th>
-                                        <th>Date Out</th>
-                                        <th>Total Price</th>
+                                        <th>Health Patient</th>
+                                        <th>Amount</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -32,8 +31,7 @@
                                     <tr>
                                         <td class="serial">1</td>
                                         <td> John </td>
-                                        <td> 22/03/2025 </td>
-                                        <td> 23/03/2025 </td>
+                                        <td> rongten, ct scan </td>
                                         <td> Rp 1.200.000 </td>
                                         <td><button type="button" class="btn btn-danger"><i
                                                     class="fa fa-trash"></i></button><button type="button"
@@ -42,8 +40,7 @@
                                     <tr>
                                         <td class="serial">2</td>
                                         <td> Yeonnie </td>
-                                        <td> 23/03/2025 </td>
-                                        <td> 25/03/2025 </td>
+                                        <td> hematologi, ekg </td>
                                         <td> Rp 1.400.000 </td>
                                         <td><button type="button" class="btn btn-danger"><i
                                                     class="fa fa-trash"></i></button><button type="button"
@@ -52,8 +49,7 @@
                                     <tr>
                                         <td class="serial">3</td>
                                         <td> Kiya </td>
-                                        <td> 22/03/2025 </td>
-                                        <td> 25/03/2025 </td>
+                                        <td> rongten, ekg </td>
                                         <td> Rp 1.600.000 </td>
                                         <td><button type="button" class="btn btn-danger"><i
                                                     class="fa fa-trash"></i></button><button type="button"

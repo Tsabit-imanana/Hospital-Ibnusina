@@ -12,7 +12,7 @@ class HospitalCostController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.hospital-cost.index');
     }
 
     /**

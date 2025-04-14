@@ -12,7 +12,7 @@ class HealthRecordsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.health-records.index');
     }
 
     /**
