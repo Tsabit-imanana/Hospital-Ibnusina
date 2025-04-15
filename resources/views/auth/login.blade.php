@@ -10,10 +10,10 @@
                         <h3><strong>LOG IN</strong></h3>
                         <p class="mb-4">Welcome to Ibnu Sina Hospital. Please enter your username and password to
                             continue.</p>
-                        <form action="#" method="post">
+                        <form method="POST" action="{{ route('authenticate') }}">
                             <div class="form-group first">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" placeholder="Username" id="username">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" id="email">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
