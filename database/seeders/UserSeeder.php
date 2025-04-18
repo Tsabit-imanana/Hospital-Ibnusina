@@ -27,6 +27,9 @@ class UserSeeder extends Seeder
             'name' => 'patient1',
             'email' => 'patient@example.com',
             'password' => bcrypt('patient123'),
+            'birthdate' => '2003-04-23',
+            'address' => 'Singosari, Malang',
+            'gender' => 'male'
         ]);
 
         $patient->assignRole('patient');
