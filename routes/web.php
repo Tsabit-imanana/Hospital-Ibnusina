@@ -95,18 +95,20 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::middleware(['auth:admin', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patient.index');
+    Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
 
-    Route::get('/admin/room', [RoomController::class, 'index'])->name('admin.room.index');
+    Route::get('/room', [RoomController::class, 'index'])->name('room.index');
+    Route::get('/room/create', [RoomController::class, 'create'])->name('room.create');
+    Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
 
-    Route::get('/admin/inpatient', [InpatientController::class, 'index'])->name('admin.inpatient.index');
+    Route::get('/inpatient', [InpatientController::class, 'index'])->name('inpatient.index');
 
-    Route::get('/admin/health-records', [HealthRecordsController::class, 'index'])->name('admin.health-record.index');
+    Route::get('/health-records', [HealthRecordsController::class, 'index'])->name('health-record.index');
 
-    Route::get('/admin/hospital-cost', [HospitalCostController::class, 'index'])->name('admin.hospital-cost.index');
+    Route::get('/hospital-cost', [HospitalCostController::class, 'index'])->name('hospital-cost.index');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->json('facilites');
+            $table->json('facilities');
             $table->string('price');
-            $table->enum('gender', ['male', 'female']);
+            $table->enum('status', ['available', 'unavailable']);
             $table->timestamps();
         });
     }

@@ -11,9 +11,9 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">List Rooms</h4>
-                        <button type="button" class="btn btn-sm btn-success">
+                        <a href="{{ route('admin.room.create') }}" type="button" class="btn btn-sm btn-success">
                             <i class="fa fa-plus"></i> Add
-                        </button>
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
@@ -29,42 +29,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> Room 1 </td>
-                                        <td> Bed, Table, Sofa, AC </td>
-                                        <td> Rp 900.000 / day </td>
-                                        <td>
-                                            <span class="badge badge-complete">Available</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Room 2 </td>
-                                        <td> Bed, Table</td>
-                                        <td> Rp 500.000 / day </td>
-                                        <td>
-                                            <span class="badge badge-complete">Available</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> Room 3 </td>
-                                        <td> Bed</td>
-                                        <td> Rp 300.000 / day </td>
-                                        <td>
-                                            <span class="badge badge-complete">Available</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
+                                    @foreach ($rooms as $room)
+                                        <tr>
+                                            <td class="serial">1</td>
+                                            <td> {{ $room->type }} </td>
+                                            <td>{{ implode(', ', $room->facilities) }}</td>
+                                            <td> Rp {{ number_format($room->price, 0, ',', '.') }} / day </td>
+                                            <td>
+                                                @if ($room->status == 'available')
+                                                    <span class="badge badge-complete">{{ $room->status }}</span>
+                                                @elseif ($room->status == 'unavailable')
+                                                    <span class="badge badge-danger">{{ $room->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>

@@ -9,7 +9,7 @@
                 <li class="{{ Request::routeIs('admin.patient.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.patient.index') }}"><i class="menu-icon fa fa-heartbeat"></i>Patient List</a>
                 </li>
-                <li class="{{ Request::routeIs('admin.room.index') ? 'active' : '' }}">
+                <li class="{{ Request::routeIs('admin.room*') ? 'active' : '' }}">
                     <a href="{{ route('admin.room.index') }}"><i class="menu-icon fa fa-bed"></i>Detail Rooms</a>
                 </li>
                 <li class="{{ Request::routeIs('admin.inpatient.index') ? 'active' : '' }}">

@@ -119,6 +119,14 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="{{ asset('assets-admin/js/init/fullcalendar-init.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Any other libraries -->
+    <!-- Example: Bootstrap JS (optional if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @stack('scripts')
+
     <!--Local Stuff-->
     <script>
         jQuery(document).ready(function($) {

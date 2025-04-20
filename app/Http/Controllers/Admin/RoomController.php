@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -12,7 +13,9 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('admin.room.index');
+        $rooms = Room::all();
+        // dd($rooms);
+        return view('admin.room.index', compact('rooms'));
     }
 
     /**
@@ -28,7 +31,20 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $filteredFacilities = array_filter($request->facilities, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+
+        $room = Room::create([
+            'type' => $request->type,
+            'price' => $request->price,
+            'facilities' => array_values($filteredFacilities), // ← this is an array, saved as JSON
+            'status' => $request->status, // ← this is an array, saved as JSON
+        ]);
+
+        // dd($room);
+        return redirect()->route('admin.room.index');
     }
 
     /**
