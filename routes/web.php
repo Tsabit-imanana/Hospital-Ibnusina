@@ -82,10 +82,12 @@ Route::get('/appoinment', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+    Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+});
 
 Route::get('/profile', function () {
     return view('user/profile', [
@@ -105,4 +107,8 @@ Route::middleware(['auth:admin', 'role:admin'])->group(function () {
     Route::get('/admin/health-records', [HealthRecordsController::class, 'index'])->name('admin.health-record.index');
 
     Route::get('/admin/hospital-cost', [HospitalCostController::class, 'index'])->name('admin.hospital-cost.index');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

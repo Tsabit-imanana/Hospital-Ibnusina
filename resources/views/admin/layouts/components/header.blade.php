@@ -20,7 +20,12 @@
 
                     <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                    <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button style="border: none; background:none; padding: 10px 15px; cursor:pointer" class="nav-link" type="submit">
+                            Log Out
+                        </button>
+                    </form>
                 </div>
             </div>
 

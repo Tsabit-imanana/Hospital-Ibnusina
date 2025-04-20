@@ -11,13 +11,14 @@
                         <p class="mb-4">Welcome to Ibnu Sina Hospital. Please enter your username and password to
                             continue.</p>
                         <form method="POST" action="{{ route('authenticate') }}">
+                            @csrf
                             <div class="form-group first">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" placeholder="Email" id="email">
+                                <input type="email" class="form-control" name="email" placeholder="Email" id="email">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Your Password" id="password">
+                                <input type="password" class="form-control" name="password" placeholder="Your Password" id="password">
                             </div>
 
                             <div class="d-flex mb-5 align-items-center">
@@ -27,7 +28,8 @@
                                 </label>
                                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                             </div>
-                            <input type="submit" value="Log In" class="btn btn-block custom-btn">
+                            {{-- <input type="submit" value="Log In" class="btn btn-block custom-btn"> --}}
+                            <button type="submit" class="btn btn-block custom-btn">Log In</button>
                             <div class="text-center mt-3">
                                 <hr>
                                 <p class="mt-3">
