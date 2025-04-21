@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('patients', function (Blueprint $table) {
+        Schema::create('inpatients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->date('birthdate');
-            $table->string('address');
-            $table->enum('gender', ['male', 'female']);
-            $table->rememberToken();
+            $table->foreignId('room_id')->constrained('rooms');
+            $table->foreignId('patient_id')->constrained('patients');
+            $table->date('date_in');
+            $table->date('date_out');
+            $table->date('total_price');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('inpatients');
     }
 };

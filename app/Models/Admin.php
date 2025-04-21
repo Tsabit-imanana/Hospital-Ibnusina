@@ -10,6 +10,6 @@ class Admin extends Authenticatable
 {
     use HasRoles;
 
-    protected $guard = 'admin';
+    protected $guard_name = 'admin';
 
 }
