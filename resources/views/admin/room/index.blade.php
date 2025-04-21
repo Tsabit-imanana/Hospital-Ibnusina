@@ -17,8 +17,8 @@
                     </div>
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead class="">
+                            <table class="table">
+                                <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Room Type</th>
@@ -31,7 +31,7 @@
                                 <tbody>
                                     @foreach ($rooms as $room)
                                         <tr>
-                                            <td class="serial">1</td>
+                                            <td class="serial">{{ $loop->iteration }}</td>
                                             <td> {{ $room->type }} </td>
                                             <td>{{ implode(', ', $room->facilities) }}</td>
                                             <td> Rp {{ number_format($room->price, 0, ',', '.') }} / day </td>
@@ -50,6 +50,9 @@
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                             </td>
+                                            {{-- <td>
+                                                <img src="{{ asset('storage/'.$room->picture) }}" alt="">
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                             </table>

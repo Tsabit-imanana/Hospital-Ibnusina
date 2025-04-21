@@ -11,9 +11,6 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Inpatient List</h4>
-                        <button type="button" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i> Add
-                        </button>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">

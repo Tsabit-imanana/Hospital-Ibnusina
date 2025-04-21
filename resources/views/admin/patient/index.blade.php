@@ -11,9 +11,6 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Patient List</h4>
-                        <button type="button" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i> Add
-                        </button>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
@@ -30,45 +27,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> John </td>
-                                        <td> 21/02/2000 </td>
-                                        <td> 25 </td>
-                                        <td> Jl Seruni </td>
-                                        <td>
-                                            <span class="badge badge-primary">Male</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Yeonnie </td>
-                                        <td> 11/03/2002 </td>
-                                        <td> 23 </td>
-                                        <td> Jl Raya </td>
-                                        <td>
-                                            <span class="badge badge-pending">Female</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> kiya </td>
-                                        <td> 03/05/1999 </td>
-                                        <td> 26 </td>
-                                        <td> Jl Sigura </td>
-                                        <td>
-                                            <span class="badge badge-pending">Female</span>
-                                        </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
+                                    @foreach ($patients as $patient)
+                                        <tr>
+                                            <td class="serial">{{ $loop->iteration }}</td>
+                                            <td> {{ $patient->name }} </td>
+                                            <td> {{ $patient->birthdateFormat() }} </td>
+                                            <td> {{ $patient->age() }} </td>
+                                            <td> {{ $patient->address }} </td>
+                                            <td>
+                                                @if ($patient->gender == 'male')
+                                                    <span class="badge badge-primary">Male</span>
+                                                @elseif ($patient->gender == 'female')
+                                                    <span class="badge badge-pending">Female</span>
+                                                @endif
+                                            </td>
+                                            <td><button type="button" class="btn btn-danger"><i
+                                                        class="fa fa-trash"></i></button><button type="button"
+                                                    class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
+                                        </tr>
+                                    @endforeach
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>

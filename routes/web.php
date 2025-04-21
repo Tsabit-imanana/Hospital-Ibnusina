@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HospitalCostController;
 use App\Http\Controllers\Admin\InpatientController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Patient\ProfileController as PatientProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -89,10 +90,10 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 });
 
-Route::get('/profile', function () {
-    return view('user/profile', [
-        "tittle" => "Profile"
-    ]);
+
+Route::middleware(['auth:patient', 'role:patient'])->group(function () {
+    Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile');
+    Route::get('/history', [PatientProfileController::class, 'history'])->name('history');
 });
 
 Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
@@ -111,6 +112,6 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::get('/hospital-cost', [HospitalCostController::class, 'index'])->name('hospital-cost.index');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth.session'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

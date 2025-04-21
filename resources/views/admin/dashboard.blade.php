@@ -25,41 +25,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="serial">1</td>
-                                                <td> Room 1</td>
-                                                <td>
-                                                    <span class="badge badge-complete">Available</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">2</td>
-                                                <td> Room 2</td>
-                                                <td>
-                                                    <span class="badge badge-complete">Available</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">3</td>
-                                                <td> Room 3</td>
-                                                <td>
-                                                    <span class="badge badge-danger">Not Available</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">4</td>
-                                                <td> Room 4</td>
-                                                <td>
-                                                    <span class="badge badge-danger">Not Available</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">5</td>
-                                                <td> Room 5</td>
-                                                <td>
-                                                    <span class="badge badge-complete">Available</span>
-                                                </td>
-                                            </tr>
+                                            @foreach ($rooms as $room)
+                                                <tr>
+                                                    <td class="serial">{{ $loop->iteration }}</td>
+                                                    <td> {{ $room->type }}</td>
+                                                    <td>
+                                                        @if ($room->status == 'available')
+                                                            <span class="badge badge-complete">{{ $room->status }}</span>
+                                                        @elseif ($room->status == 'unavailable')
+                                                            <span class="badge badge-danger">{{ $room->status }}</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div> <!-- /.table-stats -->
@@ -83,46 +61,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="serial">1</td>
-                                                <td> John </td>
-                                                <td>
-                                                    <span class="badge badge-primary">Male</span>
-                                                </td>
-                                                <td> 13 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">2</td>
-                                                <td> Mika </td>
-                                                <td>
-                                                    <span class="badge badge-primary">Male</span>
-                                                </td>
-                                                <td> 31 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">3</td>
-                                                <td> Alexa</td>
-                                                <td>
-                                                    <span class="badge badge-pending">Female</span>
-                                                </td>
-                                                <td> 23 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">4</td>
-                                                <td> Rachel</td>
-                                                <td>
-                                                    <span class="badge badge-pending">Female</span>
-                                                </td>
-                                                <td> 26 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="serial">5</td>
-                                                <td> Cheryl</td>
-                                                <td>
-                                                    <span class="badge badge-pending">Female</span>
-                                                </td>
-                                                <td> 16 </td>
-                                            </tr>
+                                            @foreach ($patients as $patient)
+                                                <tr>
+                                                    <td class="serial">{{ $loop->iteration }}</td>
+                                                    <td> {{ $patient->name }} </td>
+                                                    <td>
+                                                        @if ($patient->gender == 'male')
+                                                            <span class="badge badge-primary">Male</span>
+                                                        @elseif ($patient->gender == 'female')
+                                                            <span class="badge badge-pending">Female</span>
+                                                        @endif
+                                                    </td>
+                                                    <td> {{ $patient->age() }} </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div> <!-- /.table-stats -->

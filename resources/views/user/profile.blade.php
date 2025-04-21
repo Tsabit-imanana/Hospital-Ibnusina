@@ -1,7 +1,8 @@
 @extends('user.layouts.index')
+@section('title', 'Profile')
 @section('container')
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -13,20 +14,19 @@
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex flex-column">
-                            <span class="font-weight-bold mb-2">Jennie Kim</span>
+                            <span class="font-weight-bold mb-2">{{ $profile->name }}</span>
                             <span class="text-secondary text-small">Pasient</span>
                         </div>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ route('profile') }}">
                         <span class="menu-title">Profile</span>
                         <i class="mdi mdi-account-outline menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/tables/basic-table.html" href="#tables" aria-expanded="false"
-                        aria-controls="tables">
+                    <a class="nav-link" href="{{ route('history') }}" href="#tables" aria-expanded="false" aria-controls="tables">
                         <span class="menu-title">History</span>
                         <i class="mdi mdi-file-document menu-icon"></i>
                     </a>
@@ -37,18 +37,11 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">
+                    <h3 class="page-title" style="padding: 40px 0px 50px 0px;">
                         <span class="page-title-icon bg-gradient-primary text-white me-2">
                             <i class="mdi mdi-account-outline"></i>
                         </span> Profile
                     </h3>
-                    <nav aria-label="breadcrumb">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">
-
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
                 <div class="row g-0">
                     <div class="col-md-4 stretch-card grid-margin">
@@ -56,7 +49,7 @@
                             <div class="card-body">
                                 <img src="assets-profile/images/dashboard/circle.svg" class="card-img-absolute"
                                     alt="circle-image" />
-                                <h4 class="font-weight-normal mb-3">Hai, Jennie <i
+                                <h4 class="font-weight-normal mb-3">Hai, {{ $profile->name }} <i
                                         class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
                                 </h4>
                                 <h2 class="mb-5">Welcome to Your Profile</h2>
@@ -71,54 +64,28 @@
                                     <p class="card-description">Personal Info</p>
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control" />
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" value="{{ $profile->name }}"
+                                                disabled />
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Last Name</label>
-                                            <input type="text" class="form-control" />
+                                            <label>Birthdate</label>
+                                            <input type="text" class="form-control" value="{{ $profile->age() }}"
+                                                disabled />
                                         </div>
                                     </div>
 
                                     <div class="row g-3 mt-2">
                                         <div class="col-md-6">
                                             <label>Gender</label>
-                                            <select class="form-select">
-                                                <option>Male</option>
-                                                <option>Female</option>
+                                            <select class="form-select" disabled>
+                                                <option>{{ $profile->gender }}</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
                                             <label>Date of Birth</label>
-                                            <input class="form-control" placeholder="dd/mm/yyyy" />
-                                        </div>
-                                    </div>
-
-                                    <p class="card-description mt-4">Address</p>
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label>Address 1</label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>State</label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row g-3 mt-2">
-                                        <div class="col-md-6">
-                                            <label>City</label>
-                                            <input type="text" class="form-control" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Country</label>
-                                            <select class="form-select">
-                                                <option>Indonesia</option>
-                                                <option>Singapore</option>
-                                                <option>Malaysia</option>
-                                                <option>Thailand</option>
-                                            </select>
+                                            <input class="form-control" placeholder="dd/mm/yyyy"
+                                                value="{{ $profile->birthdateFormat() }}" disabled />
                                         </div>
                                     </div>
 
@@ -147,4 +114,5 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
-    @endsection
+    </div>
+@endsection

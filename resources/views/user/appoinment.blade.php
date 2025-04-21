@@ -178,7 +178,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-btm py-4 mt-5">
 			<div class="row align-items-center justify-content-between">
 				<div class="col-lg-6">

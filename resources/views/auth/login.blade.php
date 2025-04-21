@@ -13,19 +13,15 @@
                         <form method="POST" action="{{ route('authenticate') }}">
                             @csrf
                             <div class="form-group first">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="Your Password" id="password">
                             </div>
 
-                            <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                                    <input type="checkbox" checked="checked" />
-                                    <div class="control__indicator"></div>
-                                </label>
+                            <div class="d-flex mb-3 align-items-center">
                                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                             </div>
                             {{-- <input type="submit" value="Log In" class="btn btn-block custom-btn"> --}}

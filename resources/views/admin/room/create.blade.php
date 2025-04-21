@@ -12,7 +12,7 @@
                         <h4 class="box-title">Add New Room</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('admin.room.store')}}" method="POST">
+                        <form action="{{route('admin.room.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Room Type</label>
@@ -37,6 +37,10 @@
                                     <option value="available">Available</option>
                                     <option value="unavailable">Unavailable</option>
                                 </select>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Foto Kamar</label>
+                                <input type="file" name="picture" class="form-control-file" accept="image/*">
                             </div>
                             <button type="submit" class="btn btn-success">
                                 <i class="fa fa-save"></i> Simpan

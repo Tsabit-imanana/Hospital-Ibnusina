@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>IBNUSINA | {{ $tittle }}</title>
+	<title>IBNUSINA | @yield('title')</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
@@ -92,7 +92,7 @@
 
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+								aria-haspopup="true" aria-expanded="false">Doctors</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdown03">
 								<li><a class="dropdown-item" href="/doctors">Doctors</a></li>
 								<li><a class="dropdown-item" href="/doctorssingle">Doctor Single</a></li>
@@ -102,8 +102,7 @@
 
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i
-									class="icofont-thin-down"></i></a>
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdown05">
 								<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
 								<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
@@ -113,11 +112,18 @@
 						@auth
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false">Profile <i class="icofont-thin-down"></i></a>
+									aria-haspopup="true" aria-expanded="false">Profile</a>
 								<ul class="dropdown-menu" aria-labelledby="profileDropdown">
 									<li><a class="dropdown-item" href="/profile">My Profile</a></li>
 									<li><a class="dropdown-item" href="/settings">Settings</a></li>
-									<li><a class="dropdown-item" href="/logout">Logout</a></li>
+									<li>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="dropdown-item" type="submit">
+                                                Log Out
+                                            </button>
+                                        </form>
+                                    </li>
 								</ul>
 							</li>
 						@else
@@ -134,7 +140,7 @@
 		@yield('container')
 	</div>
 
-	<!-- 
+	<!--
     Essential Scripts
     =====================================-->
 
