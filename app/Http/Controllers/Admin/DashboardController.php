@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
+use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -12,7 +15,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        // dd([
+        //     'admin' => Auth::guard('admin')->check(),
+        //     'patient' => Auth::guard('patient')->check(),
+        //     'web' => Auth::guard('web')->check(), // check in case Laravel is auto-logging into this
+        //     'default' => Auth::check(), // uses web
+        // ]);
+        $rooms = Room::all();
+        $patients = Patient::all();
+        return view('admin.dashboard', compact('rooms', 'patients'));
     }
 
     /**

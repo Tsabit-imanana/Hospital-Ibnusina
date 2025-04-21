@@ -36,14 +36,14 @@ class RoomController extends Controller
             return !is_null($value) && $value !== '';
         });
 
-        $room = Room::create([
-            'type' => $request->type,
-            'price' => $request->price,
-            'facilities' => array_values($filteredFacilities), // ← this is an array, saved as JSON
-            'status' => $request->status, // ← this is an array, saved as JSON
-        ]);
+        $room = new Room();
+        $room->type = $request->type;
+        $room->price = $request->price;
+        $room->facilities= array_values($filteredFacilities);
+        $room->status = $request->status;
+        $room->picture = $request->file('picture')->store('pictures', 'public');
+        $room->save();
 
-        // dd($room);
         return redirect()->route('admin.room.index');
     }
 
