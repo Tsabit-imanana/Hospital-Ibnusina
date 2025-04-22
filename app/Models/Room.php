@@ -11,4 +11,9 @@ class Room extends Model
     ];
 
     protected $fillable = ['type', 'facilities', 'price', 'status'];
+
+    public function priceFormat()
+    {
+        return number_format($this->attributes['price'], 0, ',', '.');
+    }
 }

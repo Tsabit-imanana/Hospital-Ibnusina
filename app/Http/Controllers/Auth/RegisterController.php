@@ -18,13 +18,13 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed'
+            'username' => 'required|string|unique:users,username',
+            'password' => 'required|min:8|confirmed'
         ]);
 
         $patient = Patient::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'username' => $request->username,
             'password' => bcrypt($request->password)
         ]);
 

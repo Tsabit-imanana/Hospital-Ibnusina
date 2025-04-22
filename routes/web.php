@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\InpatientController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Patient\ProfileController as PatientProfileController;
+use App\Http\Controllers\Patient\RoomController as PatientRoomController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::get('/service', function () {
     ]);
 });
 
-Route::get('/room', function () {
+Route::get('/draft/room', function () {
     return view('user/room', [
         "tittle" => "Room"
     ]);
@@ -82,6 +83,9 @@ Route::get('/appoinment', function () {
         "tittle" => "Appoinment"
     ]);
 });
+
+Route::get('/room', [PatientRoomController::class, 'index'])->name('room');
+Route::get('/room/{id}', [PatientRoomController::class, 'show'])->name('room.show');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

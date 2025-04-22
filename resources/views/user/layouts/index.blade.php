@@ -14,31 +14,31 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
 
 	<!-- bootstrap.min css -->
-	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
 	<!-- Icon Font Css -->
-	<link rel="stylesheet" href="assets/plugins/icofont/icofont.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/icofont/icofont.min.css')}}">
 	<!-- Slick Slider  CSS -->
-	<link rel="stylesheet" href="assets/plugins/slick-carousel/slick/slick.css">
-	<link rel="stylesheet" href="assets/plugins/slick-carousel/slick/slick-theme.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/slick-carousel/slick/slick.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/slick-carousel/slick/slick-theme.css')}}">
 
 	<!-- Main Stylesheet -->
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-	<link rel="stylesheet" href="assets-profile/vendors/mdi/css/materialdesignicons.min.css">
-	<link rel="stylesheet" href="assets-profile/vendors/ti-icons/css/themify-icons.css">
-	<link rel="stylesheet" href="assets-profile/vendors/css/vendor.bundle.base.css">
-	<link rel="stylesheet" href="assets-profile/vendors/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/mdi/css/materialdesignicons.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/ti-icons/css/themify-icons.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/css/vendor.bundle.base.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/font-awesome/css/font-awesome.min.css')}}">
 	<!-- endinject -->
 	<!-- Plugin css for this page -->
-	<link rel="stylesheet" href="assets-profile/vendors/font-awesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="assets-profile/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/font-awesome/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets-profile/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<!-- endinject -->
 	<!-- Layout styles -->
-	<link rel="stylesheet" href="assets-profile/css/style.css">
+	<link rel="stylesheet" href="{{ asset('assets-profile/css/style.css')}}">
 	<!-- End layout styles -->
-	<link rel="shortcut icon" href="assets-profile/images/favicon.png" />
+	<link rel="shortcut icon" href="{{ asset('assets-profile/images/favicon.png')}}">
 
 </head>
 
@@ -146,41 +146,41 @@
 
 
 	<!-- Main jQuery -->
-	<script src="plugins/jquery/jquery.js"></script>
+	<script src="{{ asset('assets/plugins/jquery/jquery.js')}}"></script>
 	<!-- Bootstrap 4.3.2 -->
-	<script src="plugins/bootstrap/js/popper.js"></script>
-	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="plugins/counterup/jquery.easing.js"></script>
+	<script src="{{ asset('assets/plugins/bootstrap/js/popper.js')}}"></script>
+	<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{ asset('assets/plugins/counterup/jquery.easing.js')}}"></script>
 	<!-- Slick Slider -->
-	<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+	<script src="{{ asset('assets/plugins/slick-carousel/slick/slick.min.js')}}"></script>
 	<!-- Counterup -->
-	<script src="plugins/counterup/jquery.waypoints.min.js"></script>
+	<script src="{{ asset('assets/plugins/counterup/jquery.waypoints.min.js')}}"></script>
 
-	<script src="plugins/shuffle/shuffle.min.js"></script>
-	<script src="plugins/counterup/jquery.counterup.min.js"></script>
+	<script src="{{ asset('assets/plugins/shuffle/shuffle.min.js')}}"></script>
+	<script src="{{ asset('assets/plugins/counterup/jquery.counterup.min.js')}}"></script>
 	<!-- Google Map -->
-	<script src="plugins/google-map/map.js"></script>
+	<script src="{{ asset('assets/plugins/google-map/map.js')}}"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
-	<script src="js/script.js"></script>
-	<script src="js/contact.js"></script>
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+	<script src="{{ asset('assets/js/contact.js') }}"></script>
 
-	<script src="assets-profile/vendors/js/vendor.bundle.base.js"></script>
+	<script src="{{ asset('assets-profile/vendors/js/vendor.bundle.base.js')}}"></script>
 	<!-- endinject -->
 	<!-- Plugin js for this page -->
-	<script src="assets-profile/vendors/chart.js/chart.umd.js"></script>
-	<script src="assets-profile/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script src="{{ asset('assets-profile/vendors/chart.js/chart.umd.js')}}"></script>
+	<script src="{{ asset('assets-profile/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
 	<!-- End plugin js for this page -->
 	<!-- inject:js -->
-	<script src="assets-profile/js/off-canvas.js"></script>
-	<script src="assets-profile/js/misc.js"></script>
-	<script src="assets-profile/js/settings.js"></script>
-	<script src="assets-profile/js/todolist.js"></script>
-	<script src="assets-profile/js/jquery.cookie.js"></script>
+	<script src="{{ asset('assets-profile/js/off-canvas.js')}}"></script>
+	<script src="{{ asset('assets-profile/js/misc.js')}}"></script>
+	<script src="{{ asset('assets-profile/js/settings.js')}}"></script>
+	<script src="{{ asset('assets-profile/js/todolist.js')}}"></script>
+	<script src="{{ asset('assets-profile/js/jquery.cookie.js')}}"></script>
 	<!-- endinject -->
 	<!-- Custom js for this page -->
-	<script src="assets-profile/js/dashboard.js"></script>
+	<script src="{{ asset('assets-profile/js/dashboard.js') }}"></script>
 	<!-- End custom js for this page -->
 
 </body>
