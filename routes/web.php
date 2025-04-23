@@ -108,6 +108,7 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::get('/room', [RoomController::class, 'index'])->name('room.index');
     Route::get('/room/create', [RoomController::class, 'create'])->name('room.create');
     Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
+    Route::get('/room/edit/{id}', [RoomController::class, 'edit'])->name('room.edit');
 
     Route::get('/inpatient', [InpatientController::class, 'index'])->name('inpatient.index');
 

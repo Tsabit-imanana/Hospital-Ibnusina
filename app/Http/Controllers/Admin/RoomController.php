@@ -58,9 +58,10 @@ class RoomController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $room = Room::find($id);
+        return view('admin.room.edit', compact('room'));
     }
 
     /**

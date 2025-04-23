@@ -21,7 +21,7 @@ class DashboardController extends Controller
         //     'web' => Auth::guard('web')->check(), // check in case Laravel is auto-logging into this
         //     'default' => Auth::check(), // uses web
         // ]);
-        $rooms = Room::all();
+        $rooms = Room::all()->where('status', 'available');
         $patients = Patient::all();
         return view('admin.dashboard', compact('rooms', 'patients'));
     }

@@ -46,9 +46,9 @@
                                                 <button type="button" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-warning">
+                                                <a href="{{ route('admin.room.edit', $room->id) }}" type="button" class="btn btn-warning">
                                                     <i class="fa fa-pencil"></i>
-                                                </button>
+                                                </a>
                                             </td>
                                             {{-- <td>
                                                 <img src="{{ asset('storage/'.$room->picture) }}" alt="">

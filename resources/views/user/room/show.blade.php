@@ -1,5 +1,5 @@
 @extends('user.layouts.index')
-@section('title', 'ROOM DETAIL')
+@section('title', 'ROOM INFORMATION')
 @section('container')
     <section class="page-title bg-1">
         <div class="overlay"></div>
@@ -8,13 +8,7 @@
                 <div class="col-md-12">
                     <div class="block text-center">
                         <span class="text-white">Room Details</span>
-                        <h1 class="text-capitalize mb-5 text-lg">INFORMATION ROOM</h1>
-
-                        <!-- <ul class="list-inline breadcumb-nav">
-                    <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-                    <li class="list-inline-item"><span class="text-white">/</span></li>
-                    <li class="list-inline-item"><a href="#" class="text-white-50">Department Details</a></li>
-                  </ul> -->
+                        <h1 class="text-capitalize mb-5 text-lg">ROOM INFORMATION</h1>
                     </div>
                 </div>
             </div>
