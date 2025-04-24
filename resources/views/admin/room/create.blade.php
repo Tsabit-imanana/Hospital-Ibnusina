@@ -2,10 +2,8 @@
 @section('title', 'Create Room')
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
             <div class="clearfix"></div>
-            <!-- Add Room Form -->
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -47,11 +45,9 @@
                             </button>
                         </form>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-room-form -->
         </div>
-        <!-- .animated -->
     </div>
 
 

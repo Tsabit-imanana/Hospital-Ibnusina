@@ -6,7 +6,7 @@
                 <li class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard</a>
                 </li>
-                <li class="{{ Request::routeIs('admin.patient.index') ? 'active' : '' }}">
+                <li class="{{ Request::routeIs('admin.patient*') ? 'active' : '' }}">
                     <a href="{{ route('admin.patient.index') }}"><i class="menu-icon fa fa-heartbeat"></i>Patient List</a>
                 </li>
                 <li class="{{ Request::routeIs('admin.room*') ? 'active' : '' }}">

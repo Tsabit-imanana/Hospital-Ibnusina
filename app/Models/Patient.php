@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Patient extends Authenticatable
 {
-    use HasRoles;
+    use HasRoles, SoftDeletes;
 
     protected $guard_name = 'patient';
 

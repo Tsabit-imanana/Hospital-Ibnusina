@@ -2,20 +2,17 @@
 @section('title', 'Patient List')
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
-            <!--  /Traffic -->
             <div class="clearfix"></div>
-            <!-- Orders -->
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Patient List</h4>
                     </div>
-                    <div class="card-body--">
+                    <div class="card-body">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead class="">
+                            <table class="table">
+                                <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Patient Name</th>
@@ -41,18 +38,22 @@
                                                     <span class="badge badge-pending">Female</span>
                                                 @endif
                                             </td>
-                                            <td><button type="button" class="btn btn-danger"><i
-                                                        class="fa fa-trash"></i></button><button type="button"
-                                                    class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                <a href="{{ route('admin.patient.edit', $patient->id) }}" type="button" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
+                                </tbody>
                             </table>
-                        </div> <!-- /.table-stats -->
+                        </div>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-category -->
         </div>
-        <!-- .animated -->
     </div>
 @endsection

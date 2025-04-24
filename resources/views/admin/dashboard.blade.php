@@ -14,10 +14,10 @@
                             <div class="card-body">
                                 <h4 class="box-title">Available Room</h4>
                             </div>
-                            <div class="card-body--">
+                            <div class="card-body">
                                 <div class="table-stats order-table ov-h">
-                                    <table class="table ">
-                                        <thead class="">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Room Type</th>
@@ -40,19 +40,19 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div> <!-- /.table-stats -->
+                                </div>
                             </div>
-                        </div> <!-- /.card -->
+                        </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="box-title">Patient</h4>
                             </div>
-                            <div class="card-body--">
+                            <div class="card-body">
                                 <div class="table-stats order-table ov-h">
-                                    <table class="table ">
-                                        <thead class="">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Name Patient</th>
@@ -77,21 +77,21 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div> <!-- /.table-stats -->
+                                </div>
                             </div>
-                        </div> <!-- /.card -->
-                    </div> <!-- /.col-lg-8 -->
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="box-title">InPatient</h4>
+                        <h4 class="box-title">Inpatient</h4>
                     </div>
-                    <div class="card-body--">
+                    <div class="card-body">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead class="">
+                            <table class="table">
+                                <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Patient Name</th>
@@ -124,13 +124,12 @@
                                             <span class="badge badge-pending">Female</span>
                                         </td>
                                     </tr>
+                                </tbody>
                             </table>
-                        </div> <!-- /.table-stats -->
+                        </div>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-category -->
         </div>
-        <!-- .animated -->
     </div>
 @endsection

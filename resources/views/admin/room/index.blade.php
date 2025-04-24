@@ -43,7 +43,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-danger">
+                                                <button onclick="deleteRoom({{ $room->id }})" type="button" class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                                 <a href="{{ route('admin.room.edit', $room->id) }}" type="button" class="btn btn-warning">
@@ -55,13 +55,44 @@
                                             </td> --}}
                                         </tr>
                                     @endforeach
+                                </tbody>
                             </table>
-                        </div> <!-- /.table-stats -->
+                        </div>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-category -->
         </div>
-        <!-- .animated -->
     </div>
+
+    @push('scripts')
+        <script>
+            function deleteRoom(id) {
+                if (!confirm("Are you sure you want to delete this item?")) {
+                    return; // user canceled
+                }
+
+                fetch(`/admin/room/destroy/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Deleted successfully!");
+                            // Optionally: reload or remove the element from DOM
+                            location.reload(); // or manually remove item from the page
+                        } else {
+                            alert("Failed to delete. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred.");
+                    });
+            }
+        </script>
+    @endpush
 @endsection

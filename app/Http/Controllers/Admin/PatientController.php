@@ -44,24 +44,32 @@ class PatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $patient = Patient::find($id);
+        return view('admin.patient.edit', compact('patient'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $patient = Patient::find($id);
+        $patient->name = $request->name;
+        $patient->birthdate = $request->birthdate;
+        $patient->address = $request->address;
+        $patient->save();
+
+        return redirect()->route('admin.patient.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $patient = Patient::find($id);
+        $patient->delete();
     }
 }

@@ -14,7 +14,6 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = Room::all();
-        // dd($rooms);
         return view('admin.room.index', compact('rooms'));
     }
 
@@ -67,16 +66,23 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // $patient = Room::find($id);
+        // $patient->name = $request->name;
+        // $patient->birthdate = $request->birthdate;
+        // $patient->address = $request->address;
+        // $patient->save();
+
+        return redirect()->route('admin.patient.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $room = Room::find($id);
+        $room->delete();
     }
 }

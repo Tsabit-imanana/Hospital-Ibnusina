@@ -104,11 +104,16 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/patient', [PatientController::class, 'index'])->name('patient.index');
+    Route::get('/patient/edit/{id}', [PatientController::class, 'edit'])->name('patient.edit');
+    Route::put('/patient/update/{id}', [PatientController::class, 'update'])->name('patient.update');
+    Route::delete('/patient/destroy/{id}', [PatientController::class, 'destroy'])->name('patient.destroy');
 
     Route::get('/room', [RoomController::class, 'index'])->name('room.index');
     Route::get('/room/create', [RoomController::class, 'create'])->name('room.create');
     Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
     Route::get('/room/edit/{id}', [RoomController::class, 'edit'])->name('room.edit');
+    Route::put('/room/update/{id}', [RoomController::class, 'update'])->name('room.update');
+    Route::delete('/room/destroy/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
 
     Route::get('/inpatient', [InpatientController::class, 'index'])->name('inpatient.index');
 

@@ -2,10 +2,8 @@
 @section('title', 'Edit Room')
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
             <div class="clearfix"></div>
-            <!-- Add Room Form -->
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -22,8 +20,9 @@
                                 <label>Fasilitas</label>
                                 <div class="input-group mb-2">
                                     <input type="text" name="facilities[]" class="form-control" placeholder="Enter item">
-                                    <button type="button" class="btn btn-danger remove-input"><i
-                                            class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-danger remove-input">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-sm btn-primary" id="add-input">Add More</button>
@@ -48,10 +47,8 @@
                             </button>
                         </form>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-room-form -->
         </div>
-        <!-- .animated -->
     </div>
 @endsection
