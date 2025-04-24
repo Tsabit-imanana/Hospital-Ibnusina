@@ -12,7 +12,7 @@
                 <li class="{{ Request::routeIs('admin.room*') ? 'active' : '' }}">
                     <a href="{{ route('admin.room.index') }}"><i class="menu-icon fa fa-bed"></i>Detail Rooms</a>
                 </li>
-                <li class="{{ Request::routeIs('admin.inpatient.index') ? 'active' : '' }}">
+                <li class="{{ Request::routeIs('admin.inpatient*') ? 'active' : '' }}">
                     <a href="{{ route('admin.inpatient.index') }}"><i class="menu-icon fa fa-heart"></i>Inpatient List</a>
                 </li>
                 <li class="{{ Request::routeIs('admin.health-record.index') ? 'active' : '' }}">

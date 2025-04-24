@@ -31,9 +31,9 @@
                     <div class="department-content mt-5">
                         <h3 class="text-md"></h3>
                         <div class="d-flex align-items-center">
-                            @if ($room->status == 'available')
+                            @if ($room->status === 'available')
                                 <div class="badge badge-success">Available</div>
-                            @elseif ($room->status == 'available')
+                            @elseif ($room->status === 'unavailable')
                                 <div class="badge badge-danger">Unavailable</div>
                             @endif
                         </div>

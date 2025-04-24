@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -68,13 +69,30 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $patient = Room::find($id);
-        // $patient->name = $request->name;
-        // $patient->birthdate = $request->birthdate;
-        // $patient->address = $request->address;
-        // $patient->save();
 
-        return redirect()->route('admin.patient.index');
+        $filteredFacilities = array_filter($request->facilities, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+
+        $room = Room::find($id);
+        $room->type = $request->type;
+        $room->price = $request->price;
+        $room->facilities = array_values($filteredFacilities);
+        $room->status = $request->status;
+
+        if ($request->hasFile('picture')) {
+            // Delete old image if exists
+            if ($room->picture && Storage::disk('public')->exists($room->picture)) {
+                Storage::disk('public')->delete($room->picture);
+            }
+
+            // Store new image
+            $room->picture = $request->file('picture')->store('pictures', 'public');
+        }
+
+        $room->save();
+
+        return redirect()->route('admin.room.index');
     }
 
     /**
