@@ -2,19 +2,16 @@
 @section('title', 'Inpatient List')
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
-            <!--  /Traffic -->
             <div class="clearfix"></div>
-            <!-- Orders -->
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Inpatient List</h4>
                     </div>
-                    <div class="card-body--">
+                    <div class="card-body">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
+                            <table class="table">
                                 <thead class="">
                                     <tr>
                                         <th>No</th>
@@ -26,43 +23,61 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> John </td>
-                                        <td> 22/03/2025 </td>
-                                        <td> 23/03/2025 </td>
-                                        <td> Rp 1.200.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Yeonnie </td>
-                                        <td> 23/03/2025 </td>
-                                        <td> 25/03/2025 </td>
-                                        <td> Rp 1.400.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> Kiya </td>
-                                        <td> 22/03/2025 </td>
-                                        <td> 25/03/2025 </td>
-                                        <td> Rp 1.600.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
+                                    @foreach ($inpatients as $inpatient)
+                                        <tr>
+                                            <td class="serial">{{ $loop->iteration }}</td>
+                                            <td> {{ $inpatient->patient->name }} </td>
+                                            <td> {{ $inpatient->dateInFormat() }} </td>
+                                            <td> {{ $inpatient->dateOutFormat() }} </td>
+                                            <td> Rp {{ $inpatient->totalPriceFormat() }} </td>
+                                            <td>
+                                                <button onclick="deleteInpatient({{ $inpatient->id }})" type="button" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                <a href="{{ route('admin.inpatient.edit', $inpatient->id) }}" type="button" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
-                        </div> <!-- /.table-stats -->
+                        </div>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-category -->
         </div>
-        <!-- .animated -->
     </div>
+
+    @push('scripts')
+        <script>
+            function deleteInpatient(id) {
+                if (!confirm("Are you sure you want to delete this item?")) {
+                    return; // user canceled
+                }
+
+                fetch(`/admin/inpatient/destroy/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Deleted successfully!");
+                            // Optionally: reload or remove the element from DOM
+                            location.reload(); // or manually remove item from the page
+                        } else {
+                            alert("Failed to delete. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred.");
+                    });
+            }
+        </script>
+    @endpush
 @endsection

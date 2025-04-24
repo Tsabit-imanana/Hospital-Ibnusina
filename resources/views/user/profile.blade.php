@@ -65,13 +65,11 @@
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <label>Name</label>
-                                            <input type="text" class="form-control" value="{{ $profile->name }}"
-                                                disabled />
+                                            <input type="text" class="form-control" value="{{ $profile->name }}"/>
                                         </div>
                                         <div class="col-md-6">
                                             <label>Birthdate</label>
-                                            <input type="text" class="form-control" value="{{ $profile->age() }}"
-                                                disabled />
+                                            <input type="text" class="form-control" value="{{ $profile->age() }}"/>
                                         </div>
                                     </div>
 

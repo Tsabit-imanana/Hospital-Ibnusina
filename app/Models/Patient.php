@@ -14,6 +14,8 @@ class Patient extends Authenticatable
 
     protected $guard_name = 'patient';
 
+    protected $fillable = ['name', 'birthdate', 'address', 'username', 'password'];
+
     public function age()
     {
         return Carbon::parse($this->attributes['birthdate'])->age;

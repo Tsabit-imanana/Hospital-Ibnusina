@@ -1,5 +1,5 @@
 @extends('user.layouts.index')
-@section('title', 'ROOM INFORMATION')
+@section('title', 'BOOK ROOM')
 @section('container')
     <section class="page-title bg-1">
         <div class="overlay"></div>
@@ -7,74 +7,56 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block text-center">
-                        <span class="text-white">Room Details</span>
-                        <h1 class="text-capitalize mb-5 text-lg">ROOM INFORMATION</h1>
+                        <span class="text-white">Book your Room</span>
+                        <h1 class="text-capitalize mb-5 text-lg">Appoinment</h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section class="section department-single">
+    <section class="appoinment section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="department-img">
-                        <img src="{{ asset('storage/' . $room->picture) }}" alt="" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="department-content mt-5">
-                        <h3 class="text-md"></h3>
-                        <div class="d-flex align-items-center">
-                            @if ($room->status === 'available')
-                                <div class="badge badge-success">Available</div>
-                            @elseif ($room->status === 'unavailable')
-                                <div class="badge badge-danger">Unavailable</div>
-                            @endif
-                        </div>
-                        <div class="divider my-4"></div>
-                        <p class="lead">Rp. {{ $room->priceFormat() }}/Day</p>
-                        <p>The ultimate luxury and comfort for your optimal recovery. Enjoy exclusive facilities with
-                            premium healthcare services.</p>
-
-
-                        <h3 class="mt-5 mb-4">Facilities</h3>
-                        <div class="divider my-4"></div>
-                        <ul class="list-unstyled department-service">
-                            @foreach ($room->facilities as $facility)
-                                <li><i class="icofont-check mr-2"></i>{{ $facility }}</li>
-                            @endforeach
-                        </ul>
-
-                        <a href="{{ route('room.appointment', $room->id) }}" class="btn btn-main-2 btn-round-full">BOOK THIS ROOM<i
-                                class="icofont-simple-right ml-2  "></i></a>
-                    </div>
-                </div>
-
                 <div class="col-lg-4">
-                    <div class="sidebar-widget schedule-widget mt-5">
-                        <h5 class="mb-4">Visiting Hours</h5>
+                    <div class="mt-3">
+                        <div class="feature-icon mb-3">
+                            <i class="icofont-support text-lg"></i>
+                        </div>
+                        <span class="h3">Call for an Emergency Service!</span>
+                        <h2 class="text-color mt-3">+84 789 1256 </h2>
+                    </div>
+                </div>
 
-                        <ul class="list-unstyled">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <a href="#">Afternoon</a>
-                                <span>11:00 - 13:00 WIB</span>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <a href="#">Evening</a>
-                                <span>17:00 - 20:00 WIB</span>
-                            </li>
-                        </ul>
+                <div class="col-lg-8">
+                    <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+                        <h2 class="mb-2 title-color">Book an appoinment</h2>
+                        <p class="mb-4">
+                            Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.
+                        </p>
+                        <form class="appoinment-form" action="{{ route('room.bookAppointment', $room->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input name="date_in" type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-main btn-round-full" style="border-color: black">
+                                Make Appoinment
+                                <i class="icofont-simple-right ml-2"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
+
 
     <!-- footer Start -->
     <footer class="footer section gray-bg">

@@ -29,7 +29,7 @@
                             <div class="text-center mt-3">
                                 <hr>
                                 <p class="mt-3">
-                                    No account yet? <a href="/register" class="text-custom fw-bold">Register</a>
+                                    No account yet? <a href="/registration" class="text-custom fw-bold">Register</a>
                                 </p>
                             </div>
                         </form>

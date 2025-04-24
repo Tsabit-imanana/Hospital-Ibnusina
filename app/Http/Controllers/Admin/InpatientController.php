@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Inpatient;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InpatientController extends Controller
@@ -12,7 +14,8 @@ class InpatientController extends Controller
      */
     public function index()
     {
-        return view('admin.inpatient.index');
+        $inpatients = Inpatient::all();
+        return view('admin.inpatient.index', compact('inpatients'));
     }
 
     /**
@@ -42,24 +45,40 @@ class InpatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $inpatient = Inpatient::find($id);
+        return view('admin.inpatient.edit', compact('inpatient'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $inpatient = Inpatient::find($id);
+
+        $dateIn = Carbon::parse($inpatient->date_in);
+        $dateOut = Carbon::parse($request->date_out);;
+
+        $totalPrice = $inpatient->room->price * $dateIn->diffInDays($dateOut);
+
+        // dd([$dateIn, $dateOut, $totalPrice]);
+
+        $inpatient->date_out = $request->date_out;
+        $inpatient->total_price = $totalPrice;
+
+        $inpatient->save();
+
+        return redirect()->route('admin.inpatient.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $inpatient = Inpatient::find($id);
+        $inpatient->delete();
     }
 }

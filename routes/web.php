@@ -86,18 +86,22 @@ Route::get('/appoinment', function () {
 
 Route::get('/room', [PatientRoomController::class, 'index'])->name('room');
 Route::get('/room/{id}', [PatientRoomController::class, 'show'])->name('room.show');
+Route::get('/room/{id}/appointment', [PatientRoomController::class, 'appointment'])->name('room.appointment');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
-    Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+    Route::get('/registration', [RegisterController::class, 'index'])->name('registration.index');
+    Route::post('/registration/register', [RegisterController::class, 'register'])->name('registration.register');
 });
 
 
 Route::middleware(['auth:patient', 'role:patient'])->group(function () {
     Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile');
     Route::get('/history', [PatientProfileController::class, 'history'])->name('history');
+
+    Route::post('/room/{id}/book-appointment', [PatientRoomController::class, 'bookAppointment'])->name('room.bookAppointment');
 });
 
 Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->group(function () {
@@ -116,6 +120,9 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::delete('/room/destroy/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
 
     Route::get('/inpatient', [InpatientController::class, 'index'])->name('inpatient.index');
+    Route::get('/inpatient/edit/{id}', [InpatientController::class, 'edit'])->name('inpatient.edit');
+    Route::put('/inpatient/update/{id}', [InpatientController::class, 'update'])->name('inpatient.update');
+    Route::delete('/inpatient/destroy/{id}', [InpatientController::class, 'destroy'])->name('inpatient.destroy');
 
     Route::get('/health-records', [HealthRecordsController::class, 'index'])->name('health-record.index');
 
