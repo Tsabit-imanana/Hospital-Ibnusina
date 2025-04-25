@@ -101,6 +101,8 @@ Route::middleware(['auth:patient', 'role:patient'])->group(function () {
     Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile');
     Route::get('/history', [PatientProfileController::class, 'history'])->name('history');
 
+    Route::put('/profile/{id}', [PatientProfileController::class, 'update'])->name('profile.update');
+
     Route::post('/room/{id}/book-appointment', [PatientRoomController::class, 'bookAppointment'])->name('room.bookAppointment');
 });
 
@@ -125,6 +127,11 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::delete('/inpatient/destroy/{id}', [InpatientController::class, 'destroy'])->name('inpatient.destroy');
 
     Route::get('/health-records', [HealthRecordsController::class, 'index'])->name('health-record.index');
+    Route::get('/health-records/create', [HealthRecordsController::class, 'create'])->name('health-record.create');
+    Route::post('/health-records/store', [HealthRecordsController::class, 'store'])->name('health-record.store');
+    Route::get('/health-records/edit/{id}', [HealthRecordsController::class, 'edit'])->name('health-record.edit');
+    Route::put('/health-records/update/{id}', [HealthRecordsController::class, 'update'])->name('health-record.update');
+    Route::delete('/health-records/destroy/{id}', [HealthRecordsController::class, 'destroy'])->name('health-record.destroy');
 
     Route::get('/hospital-cost', [HospitalCostController::class, 'index'])->name('hospital-cost.index');
 });

@@ -28,8 +28,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Address</label>
-                                <select class="form-select" name="gender">
+                                <label>Gender</label>
+                                <select class="form-control" name="gender">
+                                    <option selected disabled>Choose Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>

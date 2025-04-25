@@ -14,8 +14,7 @@
                         <h4 class="box-title">Add New Room</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.room.update', $room->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('admin.room.update', $room->id) }}" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="form-group">

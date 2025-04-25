@@ -2,23 +2,20 @@
 @section('title', 'Health Records List')
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
-            <!--  /Traffic -->
             <div class="clearfix"></div>
-            <!-- Orders -->
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Health Records</h4>
-                        <button type="button" class="btn btn-sm btn-success">
+                        <a href="{{ route('admin.health-record.create') }}" type="button" class="btn btn-sm btn-success">
                             <i class="fa fa-plus"></i> Add
-                        </button>
+                        </a>
                     </div>
-                    <div class="card-body--">
+                    <div class="card-body">
                         <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead class="">
+                            <table class="table">
+                                <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Patient Name</th>
@@ -29,43 +26,64 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> John </td>
-                                        <td> Room 1 </td>
-                                        <td> rongten, ct scan </td>
-                                        <td> Rp 1.200.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Yeonnie </td>
-                                        <td> Room 2 </td>
-                                        <td> hematologi, ekg </td>
-                                        <td> Rp 1.400.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> Kiya </td>
-                                        <td> Room 3 </td>
-                                        <td> rongten, ekg </td>
-                                        <td> Rp 1.600.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
+                                    @foreach ($health_records as $item)
+                                        {{-- @dd(implode(', ', array_keys(json_decode($item->check_ups, true)))) --}}
+                                        <tr>
+                                            <td class="serial">{{ $loop->iteration }}</td>
+                                            <td> {{ $item->patient->name }} </td>
+                                            <td> {{ $item->room->type }} </td>
+                                            <td> {{ implode(', ', array_keys($item->check_ups, true)) }} </td>
+                                            <td> Rp {{ $item->totalPriceFormat() }} </td>
+                                            <td>
+                                                <button onclick="deleteHealthRecord({{ $item->id }})" type="button"
+                                                    class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                <a href="{{ route('admin.health-record.edit', $item->id) }}" type="button"
+                                                    class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
-                        </div> <!-- /.table-stats -->
+                        </div>
                     </div>
-                </div> <!-- /.card -->
+                </div>
             </div>
-            <!-- /#add-category -->
         </div>
-        <!-- .animated -->
     </div>
+
+    @push('scripts')
+        <script>
+            function deleteHealthRecord(id) {
+                if (!confirm("Are you sure you want to delete this item?")) {
+                    return; // user canceled
+                }
+
+                fetch(`/admin/health-records/destroy/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Deleted successfully!");
+                            // Optionally: reload or remove the element from DOM
+                            location.reload(); // or manually remove item from the page
+                        } else {
+                            alert("Failed to delete. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred.");
+                    });
+            }
+        </script>
+    @endpush
 @endsection
