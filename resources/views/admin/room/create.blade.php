@@ -14,7 +14,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Room Type</label>
-                                <input type="text" name="type" class="form-control" placeholder="Masukkan tipe kamar">
+                                <input type="text" name="type" class="form-acontrol" placeholder="Masukkan tipe kamar">
                             </div>
                             <div id="input-wrapper">
                                 <label>Fasilitas</label>

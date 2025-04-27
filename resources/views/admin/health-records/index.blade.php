@@ -32,7 +32,7 @@
                                             <td class="serial">{{ $loop->iteration }}</td>
                                             <td> {{ $item->patient->name }} </td>
                                             <td> {{ $item->room->type }} </td>
-                                            <td> {{ implode(', ', array_keys($item->check_ups, true)) }} </td>
+                                            <td> {{ implode(separator: ', ', array: array_keys($item->check_ups, true)) }} </td>
                                             <td> Rp {{ $item->totalPriceFormat() }} </td>
                                             <td>
                                                 <button onclick="deleteHealthRecord({{ $item->id }})" type="button"
