@@ -88,7 +88,7 @@ Route::get('/room', [PatientRoomController::class, 'index'])->name('room');
 Route::get('/room/{id}', [PatientRoomController::class, 'show'])->name('room.show');
 Route::get('/room/{id}/appointment', [PatientRoomController::class, 'appointment'])->name('room.appointment');
 
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['web', 'guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 
@@ -97,10 +97,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 
+
 Route::middleware(['auth:patient', 'role:patient'])->group(function () {
     Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile');
     Route::get('/history', [PatientProfileController::class, 'history'])->name('history');
-    Route::get('/history-terbayar', [PatientProfileController::class, 'terbayar'])->name('history-terbayar');
+    Route::get('/history-terbayar', action: [PatientProfileController::class, 'terbayar'])->name('history-terbayar');
 
     Route::put('/profile/{id}', [PatientProfileController::class, 'update'])->name('profile.update');
 
