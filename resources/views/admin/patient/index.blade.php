@@ -39,9 +39,13 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
+                                                <form action="{{ route('admin.patient.destroy', $patient->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
                                                 <a href="{{ route('admin.patient.edit', $patient->id) }}" type="button" class="btn btn-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
