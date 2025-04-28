@@ -100,6 +100,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth:patient', 'role:patient'])->group(function () {
     Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile');
     Route::get('/history', [PatientProfileController::class, 'history'])->name('history');
+    Route::get('/history-terbayar', action: [PatientProfileController::class, 'terbayar'])->name('history-terbayar');
 
     Route::put('/profile/{id}', [PatientProfileController::class, 'update'])->name('profile.update');
 
@@ -134,6 +135,12 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::delete('/health-records/destroy/{id}', [HealthRecordsController::class, 'destroy'])->name('health-record.destroy');
 
     Route::get('/hospital-cost', [HospitalCostController::class, 'index'])->name('hospital-cost.index');
+    Route::get('/hospital-cost/create', [HospitalCostController::class, 'create'])->name('hospital-cost.create');
+    Route::post('/hospital-cost/store', [HospitalCostController::class, 'store'])->name('hospital-cost.store');
+    Route::get('admin/hospital-cost/{id}/edit', [HospitalCostController::class, 'edit'])->name('hospital-cost.edit');
+    Route::put('admin/hospital-cost/{id}', [HospitalCostController::class, 'update'])->name('hospital-cost.update');
+    Route::delete('admin/hospital-cost/{id}', [HospitalCostController::class, 'destroy'])->name('hospital-cost.destroy');
+
 });
 
 Route::middleware(['auth.session'])->group(function () {

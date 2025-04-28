@@ -1,5 +1,5 @@
 @extends('admin.layouts.index')
-@section('title', 'Room List')
+@section('title', 'Hospital Cost List')
 @section('content')
     <div class="content">
         <!-- Animated -->
@@ -12,7 +12,9 @@
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Hospital Cost</h4>
                         <button type="button" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i> Add
+                            <a href="{{ route('admin.hospital-cost.create') }}" class="text-white">
+                                <i class="fa fa-plus"></i> Add
+                            </a>                            
                         </button>
                     </div>
                     <div class="card-body--">
@@ -28,33 +30,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> John </td>
-                                        <td> rongten, ct scan </td>
-                                        <td> Rp 1.200.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Yeonnie </td>
-                                        <td> hematologi, ekg </td>
-                                        <td> Rp 1.400.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> Kiya </td>
-                                        <td> rongten, ekg </td>
-                                        <td> Rp 1.600.000 </td>
-                                        <td><button type="button" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button><button type="button"
-                                                class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
-                                    </tr>
+                                    @foreach ($hospitalCosts as $index => $hospitalCost)
+                                        <tr>
+                                            <td class="serial">{{ $index + 1 }}</td>
+                                            <td>{{ $hospitalCost->patient->name }}</td> <!-- Nama pasien -->
+                                            <td>{{ $hospitalCost->health_patient }}</td> <!-- Layanan kesehatan -->
+                                            <td>Rp {{ number_format($hospitalCost->amount, 0, ',', '.') }}</td> <!-- Jumlah dengan format uang -->
+                                            <td>
+                                                <!-- Edit dan Delete Button -->
+                                                {{-- <a href="{{ route('admin.hospital-cost.edit', $hospitalCost->id) }}" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a> --}}
+                                                <form action="{{ route('admin.hospital-cost.destroy', $hospitalCost->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>
