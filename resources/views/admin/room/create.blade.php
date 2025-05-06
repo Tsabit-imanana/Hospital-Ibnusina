@@ -40,9 +40,17 @@
                                 </select>
                             </div>
                             <div class="form-group mt-3">
+                                <label for="caption">Caption</label>
+                                <textarea name="caption" class="form-control" rows="3"
+                                    placeholder="Tambahkan caption kamar di sini"></textarea>
+                            </div>
+
+                            <div class="form-group mt-3">
                                 <label>Foto Kamar</label>
-                                <input type="file" id="pictureInput" name="picture" class="form-control-file" accept="image/*">
-                                <img id="previewImage" src="#" alt="Image Preview" style="display: none; max-width: 200px; margin-top: 10px;">
+                                <input type="file" id="pictureInput" name="picture" class="form-control-file"
+                                    accept="image/*">
+                                <img id="previewImage" src="#" alt="Image Preview"
+                                    style="display: none; max-width: 200px; margin-top: 10px;">
                             </div>
                             <button type="submit" class="btn btn-success">
                                 <i class="fa fa-save"></i> Simpan
@@ -57,26 +65,26 @@
 
     @push('scripts')
         <script>
-            $(document).ready(function() {
-                $('#add-input').click(function() {
+            $(document).ready(function () {
+                $('#add-input').click(function () {
                     const newInput = `
-                <div class="input-group mb-2">
-                    <input type="text" name="facilities[]" class="form-control" placeholder="Enter item">
-                    <button type="button" class="btn btn-danger remove-input"><i class="fa fa-trash"></i></button>
-                </div>
-            `;
+                        <div class="input-group mb-2">
+                            <input type="text" name="facilities[]" class="form-control" placeholder="Enter item">
+                            <button type="button" class="btn btn-danger remove-input"><i class="fa fa-trash"></i></button>
+                        </div>
+                    `;
                     $('#input-wrapper').append(newInput);
                 });
 
                 // Remove specific input group
-                $(document).on('click', '.remove-input', function() {
+                $(document).on('click', '.remove-input', function () {
                     $(this).closest('.input-group').remove();
                 });
             });
         </script>
 
         <script>
-            document.getElementById('pictureInput').addEventListener('change', function(event) {
+            document.getElementById('pictureInput').addEventListener('change', function (event) {
                 const preview = document.getElementById('previewImage');
                 const file = event.target.files[0];
 

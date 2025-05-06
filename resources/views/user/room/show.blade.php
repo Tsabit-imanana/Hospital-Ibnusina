@@ -34,13 +34,12 @@
                             @if ($room->status === 'available')
                                 <div class="badge badge-success">Available</div>
                             @elseif ($room->status === 'notavailable')
-                                <div class="badge badge-danger">Not available</div>
+                                <div class="badge badge-danger" style="background-color: red;">Not available</div>
                             @endif
                         </div>
                         <div class="divider my-4"></div>
                         <p class="lead">Rp. {{ $room->priceFormat() }}/Day</p>
-                        <p>The ultimate luxury and comfort for your optimal recovery. Enjoy exclusive facilities with
-                            premium healthcare services.</p>
+                        <h5 class="mb-4" style="color:#223a66;">{{ $room->caption }}</h5>
 
 
                         <h3 class="mt-5 mb-4">Facilities</h3>

@@ -50,6 +50,7 @@ class RoomController extends Controller
         $room->price = $request->price;
         $room->facilities= array_values($filteredFacilities);
         $room->status = $request->status;
+        $room->caption = $request->caption;
         $room->picture = $request->file('picture')->store('pictures', 'public');
         $room->save();
 
@@ -88,6 +89,7 @@ class RoomController extends Controller
         $room->price = $request->price;
         $room->facilities = array_values($filteredFacilities);
         $room->status = $request->status;
+        $room->caption = $request->caption; 
 
         if ($request->hasFile('picture')) {
             // Delete old image if exists

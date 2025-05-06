@@ -14,7 +14,8 @@ class Room extends Model
         'facilities' => 'array'
     ];
 
-    protected $fillable = ['type', 'facilities', 'price', 'status'];
+    protected $fillable = ['type', 'facilities', 'price', 'status', 'caption'];
+
 
     public function priceFormat()
     {

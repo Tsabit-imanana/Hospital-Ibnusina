@@ -103,7 +103,7 @@
 					<img src="assets/images/rsibnusina/room1.png" alt="" class="img-fluid w-100">
 
 					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="/room-vvip">VVIP</a></h4>
+						<h4 class="mt-4 mb-0"><a href="/room" style="text-decoration: none; color: black;">VVIP</a></h4>
 						<p>Exclusive luxury facilities with premium personalized services.</p>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 					<img src="assets/images/rsibnusina/room2.png" alt="" class="img-fluid w-100">
 
 					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="/room-vip">VIP</a></h4>
+						<h4 class="mt-4 mb-0"><a href="/room" style="text-decoration: none; color: black;">VIP</a></h4>
 						<p>Enhanced comfort with priority services for a seamless stay.</p>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 					<img src="assets/images/rsibnusina/room3.png" alt="" class="img-fluid w-100">
 
 					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="/room-utama">Master</a></h4>
+						<h4 class="mt-4 mb-0"><a href="/room" style="text-decoration: none; color: black;">Master</a></h4>
 						<p>Spacious and well-equipped room for optimal care and relaxation.</p>
 					</div>
 				</div>
@@ -135,7 +135,7 @@
 					<img src="assets/images/rsibnusina/room4.png" alt="" class="img-fluid w-100">
 
 					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="/room-kelas1">Class I</a></h4>
+						<h4 class="mt-4 mb-0"><a href="/room" style="text-decoration: none; color: black;">Class I</a></h4>
 						<p>A comfortable and private space with high-quality medical care.</p>
 					</div>
 				</div>

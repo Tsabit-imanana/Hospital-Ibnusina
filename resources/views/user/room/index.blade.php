@@ -34,7 +34,7 @@
                             <img src="{{ asset('storage/' . $room->picture) }}" alt="" class="img-fluid w-100">
                             <div class="content">
                                 <h4 class="mt-4 mb-2 title-color">{{ $room->type }}</h4>
-                                <p class="mb-4">Luxury and premium service with exclusive facilities.</p>
+                                <p class="mb-4">{{ $room->caption }}</p>
                                 <a href="{{ route('room.show', $room->id) }}" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;"class="read-more">Learn More
                                     <i class="icofont-simple-right"></i>
                                 </a>

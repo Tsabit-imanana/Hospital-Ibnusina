@@ -14,7 +14,8 @@
                         <h4 class="box-title">Edit Room</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.room.update', $room->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.room.update', $room->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="form-group">
@@ -26,8 +27,7 @@
                                 <label>Fasilitas</label>
                                 @foreach ($room->facilities as $facility)
                                     <div class="input-group mb-2">
-                                        <input type="text" name="facilities[]" class="form-control"
-                                            value="{{ $facility }}">
+                                        <input type="text" name="facilities[]" class="form-control" value="{{ $facility }}">
                                         <button type="button" class="btn btn-danger remove-input">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -45,12 +45,18 @@
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control">
                                     @foreach ($roomStatus as $status)
-                                    <option value="{{ $status }}" {{ old('status', $room->status) == $status ? 'selected' : '' }}>
-                                        {{ ucfirst($status) }}
-                                    </option>
+                                        <option value="{{ $status }}" {{ old('status', $room->status) == $status ? 'selected' : '' }}>
+                                            {{ ucfirst($status) }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group mt-3">
+                                <label for="caption">Caption</label>
+                                <textarea name="caption" class="form-control" rows="3"
+                                    placeholder="Masukkan deskripsi kamar">{{ $room->caption }}</textarea>
+                            </div>
+
                             <div class="form-group mt-3">
                                 <label>Foto Kamar</label>
                                 <input type="file" name="picture" id="pictureInput" class="form-control-file"
@@ -71,7 +77,7 @@
 
     @push('scripts')
         <script>
-            document.getElementById('add-facility').addEventListener('click', function() {
+            document.getElementById('add-facility').addEventListener('click', function () {
                 const wrapper = document.getElementById('facility-wrapper');
                 const input = document.createElement('input');
                 input.type = 'text';
@@ -81,26 +87,26 @@
         </script>
 
         <script>
-            $(document).ready(function() {
-                $('#add-input').click(function() {
+            $(document).ready(function () {
+                $('#add-input').click(function () {
                     const newInput = `
-        <div class="input-group mb-2">
-            <input type="text" name="facilities[]" class="form-control" placeholder="Enter item">
-            <button type="button" class="btn btn-danger remove-input"><i class="fa fa-trash"></i></button>
-        </div>
-    `;
+                <div class="input-group mb-2">
+                    <input type="text" name="facilities[]" class="form-control" placeholder="Enter item">
+                    <button type="button" class="btn btn-danger remove-input"><i class="fa fa-trash"></i></button>
+                </div>
+            `;
                     $('#facility-wrapper').append(newInput);
                 });
 
                 // Remove specific input group
-                $(document).on('click', '.remove-input', function() {
+                $(document).on('click', '.remove-input', function () {
                     $(this).closest('.input-group').remove();
                 });
             });
         </script>
 
         <script>
-            document.getElementById('pictureInput').addEventListener('change', function(event) {
+            document.getElementById('pictureInput').addEventListener('change', function (event) {
                 const preview = document.getElementById('previewImage');
                 const file = event.target.files[0];
 

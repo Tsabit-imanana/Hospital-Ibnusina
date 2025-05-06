@@ -46,7 +46,7 @@
                             </div>
 
                             <button type="submit" class="btn rounded-pill" style="background-color: #223a66; color: white; border: none;" style="border-color: black">
-                                Make Appoinment
+                                Make Reservation    
                                 <i class="icofont-simple-right ml-2"></i>
                             </button>
                         </form>
