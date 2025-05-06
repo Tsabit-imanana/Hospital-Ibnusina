@@ -16,7 +16,7 @@ class Patient extends Authenticatable
     protected $guard_name = 'patient';
 
     // Field yang bisa diisi
-    protected $fillable = ['name', 'birthdate', 'address', 'username', 'password'];
+    protected $fillable = ['name', 'birthdate', 'address', 'gender', 'username', 'password'];
 
     // Sebagai tambahan untuk mengacak password
     protected $hidden = ['password'];

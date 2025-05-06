@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Models\Room;
+use App\Models\Inpatient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class DashboardController extends Controller
         // ]);
         $rooms = Room::all()->where('status', 'available');
         $patients = Patient::all();
-        return view('admin.dashboard', compact('rooms', 'patients'));
+        $inpatients = Inpatient::with('patient', 'room')->get();
+        return view('admin.dashboard', compact('rooms', 'patients','inpatients'));
     }
 
     /**

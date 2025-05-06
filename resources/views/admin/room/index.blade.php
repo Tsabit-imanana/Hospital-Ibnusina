@@ -10,11 +10,22 @@
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h4 class="box-title">List Rooms</h4>
-                        <a href="{{ route('admin.room.create') }}" type="button" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i> Add
-                        </a>
+                        <h4 class="box-title mb-0">List Rooms</h4>
+
+                        <div class="d-flex align-items-center" style="gap: 10px;">
+                            <form action="{{ route('admin.room.index') }}" method="GET" class="d-flex">
+                                <input type="text" name="search" value="{{ request('search') }}"
+                                    class="form-control form-control-sm" placeholder="Search rooms...">
+                                <button type="submit" class="btn btn-sm btn-primary ms-2"><i
+                                        class="fa fa-search"></i></button>
+                            </form>
+                            <a href="{{ route('admin.room.create') }}" class="btn btn-sm btn-success text-white">
+                                <i class="fa fa-plus"></i> Add
+                            </a>
+                        </div>
                     </div>
+
+
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
                             <table class="table">
@@ -38,15 +49,17 @@
                                             <td>
                                                 @if ($room->status == 'available')
                                                     <span class="badge badge-complete">{{ $room->status }}</span>
-                                                @elseif ($room->status == 'unavailable')
+                                                @elseif ($room->status == 'notavailable')
                                                     <span class="badge badge-danger">{{ $room->status }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <button onclick="deleteRoom({{ $room->id }})" type="button" class="btn btn-danger">
+                                                <button onclick="deleteRoom({{ $room->id }})" type="button"
+                                                    class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                <a href="{{ route('admin.room.edit', $room->id) }}" type="button" class="btn btn-warning">
+                                                <a href="{{ route('admin.room.edit', $room->id) }}" type="button"
+                                                    class="btn btn-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </td>
@@ -72,13 +85,13 @@
                 }
 
                 fetch(`/admin/room/destroy/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }
-                    })
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
                     .then(response => {
                         if (response.ok) {
                             alert("Deleted successfully!");

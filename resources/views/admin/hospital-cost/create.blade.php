@@ -4,7 +4,7 @@
     <div class="content">
         <div class="animated fadeIn">
             <div class="clearfix"></div>
-            <div class="col-xl-8 mx-auto">
+            <div class="col-xl-12 mx-auto">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Add New Hospital Cost</h4>

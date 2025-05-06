@@ -11,11 +11,21 @@ class PatientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $patients = Patient::all();
-        return view('admin.patient.index', compact('patients'));
+    public function index(Request $request)
+{
+    $query = Patient::query();
+
+    if ($request->has('search') && $request->search != '') {
+        $query->where('name', 'like', '%' . $request->search . '%')
+              ->orWhere('address', 'like', '%' . $request->search . '%')
+              ->orWhere('gender', 'like', '%' . $request->search . '%');
     }
+
+    $patients = $query->get();
+
+    return view('admin.patient.index', compact('patients'));
+}
+
 
     /**
      * Show the form for creating a new resource.

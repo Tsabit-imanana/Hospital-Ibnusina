@@ -8,7 +8,15 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <h4 class="box-title">Patient List</h4>
+                        <form action="{{ route('admin.patient.index') }}" method="GET" class="form-inline">
+                        <input type="text" name="search" class="form-control me-2" placeholder="Search patient..."
+                                value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
                     </div>
+
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
                             <table class="table">
@@ -39,10 +47,12 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-danger">
+                                            <button onclick="deletePatient({{ $patient->id }})" type="button"
+                                                    class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                <a href="{{ route('admin.patient.edit', $patient->id) }}" type="button" class="btn btn-warning">
+                                                <a href="{{ route('admin.patient.edit', $patient->id) }}" type="button"
+                                                    class="btn btn-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </td>
@@ -56,4 +66,36 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            function deletePatient(id) {
+                if (!confirm("Are you sure you want to delete this item?")) {
+                    return; // user canceled
+                }
+
+                fetch(`/admin/patient/destroy/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Deleted successfully!");
+                            // Optionally: reload or remove the element from DOM
+                            location.reload(); // or manually remove item from the page
+                        } else {
+                            alert("Failed to delete. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred.");
+                    });
+            }
+        </script>
+    @endpush
 @endsection

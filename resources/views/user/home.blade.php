@@ -6,11 +6,11 @@
 			<div class="col-lg-6 col-md-12 col-xl-7">
 				<div class="block">
 					<div class="divider mb-3"></div>
-					<span class="text-uppercase text-sm letter-spacing ">Providing Better Care for Every Patient</span>
+					<span class="text-uppercase text-sm letter-spacing"  style="color:rgba(240, 240, 240, 0.34);">Providing Better Care for Every Patient</span>
 					<h1 class="mb-3 mt-3">Ibnu Sina Hospital</h1>
-					<p class="mb-4 pr-5">Providing a smooth and comfortable care experience, ensuring every patient receives timely treatment with efficient coordination.</p>
+					<p class="mb-4 pr-5"  style="color:rgba(240, 240, 240, 0.34);">Providing a smooth and comfortable care experience, ensuring every patient receives timely treatment with efficient coordination.</p>
 					<div class="btn-container ">
-						<a href="/room" class="btn btn-main-2 btn-icon btn-round-full">See Rooms<i class="icofont-simple-right ml-2  "></i></a>
+						<a href="/room" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;">See Rooms<i class="icofont-simple-right ml-2  "></i></a>
 					</div>
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 						<span>24 Hours</span>
 						<h4 class="mb-3">Online Service</h4>
 						<p class="mb-4">Providing seamless online services for your convenience anytime, anywhere.</p>
-						<a href="/room" class="btn btn-main btn-round-full">Book a Room</a>
+						<a href="/room" class="btn rounded-pill" style="background-color: #223a66; color: white; border: none;">Book a Room</a>
 					</div>
 
 					<div class="feature-item mb-5 mb-lg-0">
@@ -79,7 +79,7 @@
 					<h2 class="title-color">About Our<br>Company</h2>
 					<p class="mt-4 mb-5">We are committed to providing comfortable, safe, and high-quality inpatient care for every patient. With a professional team and excellent facilities, we ensure optimal treatment throughout the recovery process.</p>
 
-					<a href="/room" class="btn btn-main-2 btn-round-full btn-icon">Rooms<i class="icofont-simple-right ml-3"></i></a>
+					<a href="/room" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;">Rooms<i class="icofont-simple-right ml-3"></i></a>
 				</div>
 			</div>
 		</div>
@@ -143,105 +143,5 @@
 		</div>
 	</div>
 </section>
-<!-- footer Start -->
-<footer class="footer section gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 mr-auto col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<div class="logo mb-4">
-						<img src="assets/images/logo.png" alt="" class="img-fluid">
-					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
-
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Department</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Surgery </a></li>
-						<li><a href="#">Wome's Health</a></li>
-						<li><a href="#">Radiology</a></li>
-						<li><a href="#">Cardioc</a></li>
-						<li><a href="#">Medicine</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Support</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Company Support </a></li>
-						<li><a href="#">FAQuestions</a></li>
-						<li><a href="#">Company Licence</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="widget widget-contact mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Get in Touch</h4>
-					<div class="divider mb-4"></div>
-
-					<div class="footer-contact-block mb-4">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-email mr-3"></i>
-							<span class="h6 mb-0">Support Available for 24/7</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-					</div>
-
-					<div class="footer-contact-block">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="footer-btm py-4 mt-5">
-			<div class="row align-items-center justify-content-between">
-				<div class="col-lg-6">
-					<div class="copyright">
-						&copy; Copyright Reserved to <span class="text-color">Novena</span> by <a href="https://themefisher.com/" target="_blank">Themefisher</a>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-						</form>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					<a class="backtop js-scroll-trigger" href="#top">
-						<i class="icofont-long-arrow-up"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
 
 @endsection

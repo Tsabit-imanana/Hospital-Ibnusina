@@ -2,7 +2,7 @@
 @section('title', 'Edit Room')
 @section('content')
     @php
-        $roomStatus = ['available', 'unavailable'];
+        $roomStatus = ['available', 'notavailable'];
     @endphp
 
     <div class="content">
@@ -11,7 +11,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h4 class="box-title">Add New Room</h4>
+                        <h4 class="box-title">Edit Room</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('admin.room.update', $room->id) }}" method="POST" enctype="multipart/form-data">

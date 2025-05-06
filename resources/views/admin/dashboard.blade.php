@@ -32,7 +32,7 @@
                                                     <td>
                                                         @if ($room->status == 'available')
                                                             <span class="badge badge-complete">{{ $room->status }}</span>
-                                                        @elseif ($room->status == 'unavailable')
+                                                        @elseif ($room->status == 'notavailable')
                                                             <span class="badge badge-danger">{{ $room->status }}</span>
                                                         @endif
                                                     </td>
@@ -76,6 +76,7 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
@@ -100,31 +101,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="serial">1</td>
-                                        <td> John </td>
-                                        <td> Room 1 </td>
-                                        <td>
-                                            <span class="badge badge-primary">Male</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">2</td>
-                                        <td> Yeonnie</td>
-                                        <td> Room 2 </td>
-                                        <td>
-                                            <span class="badge badge-pending">Female</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="serial">3</td>
-                                        <td> Vena</td>
-                                        <td> Room 3 </td>
-                                        <td>
-                                            <span class="badge badge-pending">Female</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
+    @foreach ($inpatients as $inpatient)
+        <tr>
+            <td class="serial">{{ $loop->iteration }}</td>
+            <td>{{ $inpatient->patient->name }}</td>
+            <td>{{ $inpatient->room->type }}</td>
+            <td>
+                @if ($inpatient->patient->gender == 'male')
+                    <span class="badge badge-primary">Male</span>
+                @elseif ($inpatient->patient->gender == 'female')
+                    <span class="badge badge-pending">Female</span>
+                @endif
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                             </table>
                         </div>
                     </div>

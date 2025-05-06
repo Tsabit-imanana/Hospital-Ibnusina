@@ -12,11 +12,20 @@ class RoomController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $rooms = Room::all();
-        return view('admin.room.index', compact('rooms'));
+    public function index(Request $request)
+{
+    $query = Room::query();
+
+    if ($request->has('search') && $request->search != '') {
+        $query->where('type', 'like', '%' . $request->search . '%')
+              ->orWhere('status', 'like', '%' . $request->search . '%');
     }
+
+    $rooms = $query->get();
+
+    return view('admin.room.index', compact('rooms'));
+}
+
 
     /**
      * Show the form for creating a new resource.

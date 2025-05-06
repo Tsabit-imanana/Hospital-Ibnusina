@@ -7,8 +7,17 @@
             <div class="col-xl-20">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between align-items-center">
-                        <h4 class="box-title">Inpatient List</h4>
+                        <h4 class="box-title mb-0">Inpatient List</h4>
+                        <form method="GET" action="{{ route('admin.inpatient.index') }}" class="d-flex"
+                            style="max-width: 300px;">
+                            <input type="text" name="search" class="form-control me-2" placeholder="Search patient..."
+                                value="{{ request('search') }}">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
                     </div>
+
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
                             <table class="table">
@@ -31,10 +40,12 @@
                                             <td> {{ $inpatient->dateOutFormat() }} </td>
                                             <td> Rp {{ $inpatient->totalPriceFormat() }} </td>
                                             <td>
-                                                <button onclick="deleteInpatient({{ $inpatient->id }})" type="button" class="btn btn-danger">
+                                                <button onclick="deleteInpatient({{ $inpatient->id }})" type="button"
+                                                    class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                <a href="{{ route('admin.inpatient.edit', $inpatient->id) }}" type="button" class="btn btn-warning">
+                                                <a href="{{ route('admin.inpatient.edit', $inpatient->id) }}" type="button"
+                                                    class="btn btn-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </td>
@@ -57,13 +68,13 @@
                 }
 
                 fetch(`/admin/inpatient/destroy/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }
-                    })
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
                     .then(response => {
                         if (response.ok) {
                             alert("Deleted successfully!");

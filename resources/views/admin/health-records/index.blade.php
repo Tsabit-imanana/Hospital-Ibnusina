@@ -6,12 +6,22 @@
             <div class="clearfix"></div>
             <div class="col-xl-20">
                 <div class="card">
-                    <div class="card-body d-flex justify-content-between align-items-center">
-                        <h4 class="box-title">Health Records</h4>
-                        <a href="{{ route('admin.health-record.create') }}" type="button" class="btn btn-sm btn-success">
-                            <i class="fa fa-plus"></i> Add
-                        </a>
-                    </div>
+                <div class="card-body d-flex justify-content-between align-items-center">
+    <h4 class="box-title mb-0">Health Records</h4>
+    <div class="d-flex align-items-center" style="gap: 10px;">
+        <form action="{{ route('admin.health-record.index') }}" method="GET" class="d-flex">
+            <input type="text" name="search" class="form-control form-control-sm" placeholder="Search..." value="{{ request('search') }}">
+            <button type="submit" class="btn btn-sm btn-primary ms-2">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <a href="{{ route('admin.health-record.create') }}" type="button" class="btn btn-sm btn-success">
+            <i class="fa fa-plus"></i> Add
+        </a>
+    </div>
+</div>
+
+
                     <div class="card-body">
                         <div class="table-stats order-table ov-h">
                             <table class="table">

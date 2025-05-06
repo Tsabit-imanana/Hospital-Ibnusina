@@ -36,7 +36,7 @@
                                 <select name="status" class="form-control">
                                     <option selected disabled>Pilih Status</option>
                                     <option value="available">Available</option>
-                                    <option value="unavailable">Unavailable</option>
+                                    <option value="notavailable">Not available</option>
                                 </select>
                             </div>
                             <div class="form-group mt-3">

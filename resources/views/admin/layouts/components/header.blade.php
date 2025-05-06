@@ -23,10 +23,6 @@
                         My Profile
                     </a>
 
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-cog"></i>Settings
-                    </a>
-
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button style="border: none; background:none; padding: 10px 15px; cursor:pointer"

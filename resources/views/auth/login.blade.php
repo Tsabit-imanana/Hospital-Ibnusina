@@ -20,10 +20,6 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" placeholder="Your Password" id="password">
                             </div>
-
-                            <div class="d-flex mb-3 align-items-center">
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                            </div>
                             {{-- <input type="submit" value="Log In" class="btn btn-block custom-btn"> --}}
                             <button type="submit" class="btn btn-block custom-btn">Log In</button>
                             <div class="text-center mt-3">

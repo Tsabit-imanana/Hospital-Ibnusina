@@ -21,7 +21,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'birthdate' => 'required|date',
             'address' => 'required|string',
-            'gender' => 'required',
+            'gender' => 'required|in:male,female',
             'username' => 'required|string|unique:users,username',
             'password' => 'required|min:8|confirmed'
         ]);
@@ -43,6 +43,6 @@ class RegisterController extends Controller
             return redirect()->intended('/profile');
         }
 
-        return redirect()->route('user.profile');
+        return redirect()->route('login');
     }
 }
