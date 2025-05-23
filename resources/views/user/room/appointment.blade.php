@@ -15,47 +15,72 @@
         </div>
     </section>
 
-    <section class="appoinment section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="feature-icon mb-3">
-                            <i class="icofont-support text-lg"></i>
-                        </div>
-                        <span class="h3">Call for an Emergency Service!</span>
-                        <h2 class="text-color mt-3">+84 789 1256 </h2>
+<!-- SECTION: Appointment -->
+<section class="appoinment section">
+    <div class="container">
+        <div class="row">
+            <!-- Kontak Emergency -->
+            <div class="col-lg-4">
+                <div class="mt-3">
+                    <div class="feature-icon mb-3">
+                        <i class="icofont-support text-lg"></i>
                     </div>
+                    <span class="h3">Call for an Emergency Service!</span>
+                    <h2 class="text-color mt-3">+84 789 1256 </h2>
                 </div>
+            </div>
 
-                <div class="col-lg-8">
-                    <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-                        <h2 class="mb-2 title-color">Book an appoinment</h2>
-                        <p class="mb-4">
-                            Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.
-                        </p>
-                        <form class="appoinment-form" action="{{ route('room.bookAppointment', $room->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <input name="date_in" type="date" class="form-control">
-                                    </div>
+            <!-- Form Booking -->
+            <div class="col-lg-8">
+                <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+                    <h2 class="mb-2 title-color">Book an appointment</h2>
+                    <p class="mb-4">
+                        Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit. Iste dolorum atque similique praesentium soluta.
+                    </p>
+                    <form id="appointmentForm" class="appoinment-form" action="{{ route('room.bookAppointment', $room->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input name="date_in" type="date" class="form-control" required>
                                 </div>
                             </div>
+                        </div>
 
-                            <button type="submit" class="btn btn-main btn-round-full" style="border-color: black">
-                                Make Appoinment
-                                <i class="icofont-simple-right ml-2"></i>
-                            </button>
-                        </form>
-                    </div>
+                        <!-- Tombol pemicu modal -->
+                        <button type="button" class="btn btn-main btn-round-full" style="border-color: black" data-toggle="modal" data-target="#confirmationModal">
+                            Make Appointment
+                            <i class="icofont-simple-right ml-2"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-        </div>
-    </section>
+    </div>
+</section>
+
+<!-- MODAL KONFIRMASI -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi Appointment</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Tutup">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda yakin ingin membuat appointment untuk tanggal yang dipilih?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-success" onclick="submitAppointment()">Ya, Konfirmasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
     <!-- footer Start -->
@@ -163,4 +188,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPT KONFIRMASI -->
+<script>
+  function submitAppointment() {
+    document.getElementById('appointmentForm').submit();
+  }
+</script>
+
+<!-- Tambahkan ini jika Bootstrap/jQuery belum di-include -->
+<!-- BOOTSTRAP & JQUERY -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection
