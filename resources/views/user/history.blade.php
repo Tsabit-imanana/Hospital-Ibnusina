@@ -51,7 +51,7 @@
                                       <tr>
                                           <th style="width: 5%;"> No </th>
                                           <th style="width: 50%;"> Health Records </th>
-                                          <th style="width: 25%;"> Price </th>
+                                          <th style="width: 25%;"> Tanggal </th>
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -68,7 +68,7 @@
                                                 @endif
                                             </td>
                                             
-                                              <td>Rp. {{ number_format($record->total_price, 0, ',', '.') }}</td>
+                                              <td>{{ $record->created_at}}</td>
                                           </tr>
                                       @endforeach
                                   </tbody>
