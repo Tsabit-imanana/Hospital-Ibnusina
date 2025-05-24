@@ -21,6 +21,12 @@ class Patient extends Authenticatable
     // Sebagai tambahan untuk mengacak password
     protected $hidden = ['password'];
 
+        public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+
     // Mengatur format tanggal lahir menggunakan Carbon
     public function age()
     {
