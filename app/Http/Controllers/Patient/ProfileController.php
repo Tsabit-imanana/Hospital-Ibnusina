@@ -7,9 +7,6 @@ use App\Models\HealthRecords;
 use App\Models\HospitalCost;
 use App\Models\Patient;
 use App\Models\Room;
-use App\Models\HealthRecords;
-use App\Models\HospitalCost;
-use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -96,11 +93,6 @@ class ProfileController extends Controller
         return view('user.history', compact('profile', 'healthRecords', 'hospitalCosts', 'rooms', 'totalPrice'));
     }
 
-    public function terbayar(){
-        $profile = Auth::user();
-
-        return view('user.history-dummy',compact('profile'));
-    }
 
     public function update(Request $request, $id)
     {
