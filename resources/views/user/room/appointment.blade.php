@@ -15,45 +15,234 @@
         </div>
     </section>
 
-    <section class="appoinment section">
+<!-- SECTION: Appointment -->
+<section class="appoinment section">
+    <div class="container">
+        <div class="row">
+            <!-- Kontak Emergency -->
+            <div class="col-lg-4">
+                <div class="mt-3">
+                    <div class="feature-icon mb-3">
+                        <i class="icofont-support text-lg"></i>
+                    </div>
+                    <span class="h3">Call for an Emergency Service!</span>
+                    <h2 class="text-color mt-3">+84 789 1256 </h2>
+                </div>
+            </div>
+
+            <!-- Form Booking -->
+            <div class="col-lg-8">
+                <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+                    <h2 class="mb-2 title-color">Book an appointment</h2>
+                    <p class="mb-4">
+                        Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit. Iste dolorum atque similique praesentium soluta.
+                    </p>
+                    <form id="appointmentForm" class="appoinment-form" action="{{ route('room.bookAppointment', $room->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                        <input id="dateInput" name="date_in" type="date" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tombol pemicu modal -->
+                        @if(Auth::guard('patient')->check())
+                            <!-- Sudah login sebagai pasien -->
+                            <button type="button" class="btn btn-main btn-round-full" style="border-color: black" data-toggle="modal" data-target="#confirmationModal">
+                                Make Appointment
+                                <i class="icofont-simple-right ml-2"></i>
+                            </button>
+                        @else
+                            <!-- Belum login, arahkan ke halaman login -->
+                            <a href="{{ route('login') }}" class="btn btn-main btn-round-full" style="border-color: black">
+                                Login to Make Appointment
+                                <i class="icofont-simple-right ml-2"></i>
+                            </a>
+                        @endif
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL KONFIRMASI -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content shadow-lg rounded">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="confirmationModalLabel">
+          <i class="icofont-ui-calendar mr-2"></i> Konfirmasi Appointment
+        </h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Tutup">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body px-4 py-3">
+        <div class="mb-3">
+          <h6 class="mb-2 text-muted">Detail Pasien</h6>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-0 py-1"><strong>Nama:</strong> {{ Auth::guard('patient')->user()->name }}</li>
+            <li class="list-group-item px-0 py-1"><strong>Gender:</strong> {{ Auth::guard('patient')->user()->gender }}</li>
+            <li class="list-group-item px-0 py-1"><strong>Ruangan:</strong> {{ $room->type }}</li>
+          </ul>
+        </div>
+
+        <div class="mt-4">
+          <h6 class="mb-2 text-muted">Tanggal Appointment</h6>
+          <h5 class="text-primary"><i class="icofont-calendar mr-2"></i><span id="selectedDate">-</span></h5>
+        </div>
+
+        <p class="mt-4 mb-0">Apakah Anda yakin ingin melanjutkan proses appointment ini?</p>
+      </div>
+
+      <div class="modal-footer border-0 px-4 pb-4">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+          <i class="icofont-close-circled mr-1"></i> Batal
+        </button>
+        <button type="button" class="btn btn-primary" onclick="submitAppointment()">
+          <i class="icofont-check-circled mr-1"></i> Ya, Konfirmasi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- footer Start -->
+    <footer class="footer section gray-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="mt-3">
-                        <div class="feature-icon mb-3">
-                            <i class="icofont-support text-lg"></i>
+                <div class="col-lg-4 mr-auto col-sm-6">
+                    <div class="widget mb-5 mb-lg-0">
+                        <div class="logo mb-4">
+                            <img src="assets/images/logo.png" alt="" class="img-fluid">
                         </div>
-                        <span class="h3">Call for an Emergency Service!</span>
-                        <h2 class="text-color mt-3">(0353) 883238 </h2>
+                        <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur
+                            veritatis eveniet distinctio possimus.</p>
+
+                        <ul class="list-inline footer-socials mt-4">
+                            <li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
+                                        class="icofont-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://twitter.com/themefisher"><i
+                                        class="icofont-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i
+                                        class="icofont-linkedin"></i></a></li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="col-lg-8">
-                    <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-                        <h2 class="mb-2 title-color">Book an Reservation</h2>
-                        <p class="mb-4">
-                        Find the perfect stay that suits your needs. Choose your preferred room type, select your check-in and check-out dates, and complete your booking easily and quickly. We offer a variety of comfortable rooms with complete facilities and top-notch service to ensure a pleasant and memorable stay.
-                        </p>
-                        <form class="appoinment-form" action="{{ route('room.bookAppointment', $room->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="widget mb-5 mb-lg-0">
+                        <h4 class="text-capitalize mb-3">Department</h4>
+                        <div class="divider mb-4"></div>
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <input name="date_in" type="date" class="form-control">
-                                    </div>
-                                </div>
+                        <ul class="list-unstyled footer-menu lh-35">
+                            <li><a href="#">Surgery </a></li>
+                            <li><a href="#">Wome's Health</a></li>
+                            <li><a href="#">Radiology</a></li>
+                            <li><a href="#">Cardioc</a></li>
+                            <li><a href="#">Medicine</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="widget mb-5 mb-lg-0">
+                        <h4 class="text-capitalize mb-3">Support</h4>
+                        <div class="divider mb-4"></div>
+
+                        <ul class="list-unstyled footer-menu lh-35">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Company Support </a></li>
+                            <li><a href="#">FAQuestions</a></li>
+                            <li><a href="#">Company Licence</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="widget widget-contact mb-5 mb-lg-0">
+                        <h4 class="text-capitalize mb-3">Get in Touch</h4>
+                        <div class="divider mb-4"></div>
+
+                        <div class="footer-contact-block mb-4">
+                            <div class="icon d-flex align-items-center">
+                                <i class="icofont-email mr-3"></i>
+                                <span class="h6 mb-0">Support Available for 24/7</span>
                             </div>
+                            <h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
+                        </div>
 
-                            <button type="submit" class="btn rounded-pill" style="background-color: #223a66; color: white; border: none;" style="border-color: black">
-                                Make Reservation    
-                                <i class="icofont-simple-right ml-2"></i>
-                            </button>
-                        </form>
+                        <div class="footer-contact-block">
+                            <div class="icon d-flex align-items-center">
+                                <i class="icofont-support mr-3"></i>
+                                <span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+                            </div>
+                            <h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-btm py-4 mt-5">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6">
+                        <div class="copyright">
+                            &copy; Copyright Reserved to <span class="text-color">Novena</span> by <a
+                                href="https://themefisher.com/" target="_blank">Themefisher</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="subscribe-form text-lg-right mt-5 mt-lg-0">
+                            <form action="#" class="subscribe">
+                                <input type="text" class="form-control" placeholder="Your Email address">
+                                <a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="backtop js-scroll-trigger" href="#top">
+                            <i class="icofont-long-arrow-up"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-    </section>
+    </footer>
+
+    <!-- SCRIPT KONFIRMASI -->
+<script>
+  // Saat tombol pemicu modal diklik
+  document.querySelector('[data-target="#confirmationModal"]').addEventListener('click', function () {
+    const dateValue = document.getElementById('dateInput').value;
+    const displayDate = dateValue ? new Date(dateValue).toLocaleDateString('id-ID', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    }) : 'Belum dipilih';
+
+    document.getElementById('selectedDate').textContent = displayDate;
+  });
+
+  function submitAppointment() {
+    document.getElementById('appointmentForm').submit();
+  }
+</script>
+
+
+<!-- Tambahkan ini jika Bootstrap/jQuery belum di-include -->
+<!-- BOOTSTRAP & JQUERY -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection

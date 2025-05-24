@@ -57,6 +57,28 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                    @foreach ($hospitalCosts as $index => $hospitalCost)
+                                        <tr>
+                                            <td class="serial">{{ $index + 1 }}</td>
+                                            <td>{{ $hospitalCost->patient->name }}</td> <!-- Nama pasien -->
+                                            <td>{{ $hospitalCost->health_patient }}</td> <!-- Layanan kesehatan -->
+                                            <td>Rp {{ number_format($hospitalCost->amount, 0, ',', '.') }}</td> <!-- Jumlah dengan format uang -->
+                                            <td>
+                                                <!-- Edit dan Delete Button -->
+                                                {{-- <a href="{{ route('admin.hospital-cost.edit', $hospitalCost->id) }}" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a> --}}
+                                                <form action="{{ route('admin.hospital-cost.destroy', $hospitalCost->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
                     </div>
