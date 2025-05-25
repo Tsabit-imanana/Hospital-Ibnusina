@@ -50,8 +50,20 @@
                             @endforeach
                         </ul>
 
-                        <a href="{{ route('room.appointment', $room->id) }}" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;">BOOK THIS ROOM<i
-                                class="icofont-simple-right ml-2  "></i></a>
+                @auth('patient')
+                    <!-- Jika sudah login sebagai pasien -->
+                    <a href="{{ route('room.appointment', $room->id) }}" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;">
+                        BOOK THIS ROOM
+                        <i class="icofont-simple-right ml-2"></i>
+                    </a>
+                @else
+                    <!-- Jika belum login -->
+                    <a href="{{ route('login') }}" class="btn rounded-pill" style="background-color: #e12454; color: white; border: none;">
+                        LOGIN TO BOOK
+                        <i class="icofont-simple-right ml-2"></i>
+                    </a>
+                @endauth
+
                     </div>
                 </div>
 

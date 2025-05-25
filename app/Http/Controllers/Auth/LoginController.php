@@ -24,17 +24,20 @@ class LoginController extends Controller
     {
         $credentials = $request->only('username', 'password');
 
+
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('/admin/dashboard');
         }
 
         if (Auth::guard('patient')->attempt($credentials)) {
-            return redirect()->intended('/profile');
+            return redirect()->intended('/');
         }
+        dd($credentials);
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
+        
     }
 
     public function logout(Request $request)

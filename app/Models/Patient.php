@@ -21,6 +21,12 @@ class Patient extends Authenticatable
     // Sebagai tambahan untuk mengacak password
     protected $hidden = ['password'];
 
+        public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+
     // Mengatur format tanggal lahir menggunakan Carbon
     public function age()
     {
@@ -38,21 +44,28 @@ class Patient extends Authenticatable
         return $this->hasMany(HealthRecords::class);
     }
 
-    // Hook untuk mengenkripsi password secara otomatis
-    public static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($patient) {
-            if (isset($patient->password)) {
-                $patient->password = bcrypt($patient->password);
-            }
-        });
 
-        static::updating(function ($patient) {
-            if (isset($patient->password)) {
-                $patient->password = bcrypt($patient->password);
-            }
-        });
+
+public static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($patient) {
+    // Jika sudah hash, jangan encrypt ulang
+    if (!password_get_info($patient->password)['algo']) {
+        $patient->password = bcrypt($patient->password);
     }
+});
+
+static::updating(function ($patient) {
+    if ($patient->isDirty('password')) {
+        if (!password_get_info($patient->password)['algo']) {
+            $patient->password = bcrypt($patient->password);
+        }
+    }
+});
+
+}
+
 }

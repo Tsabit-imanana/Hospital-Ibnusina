@@ -38,6 +38,7 @@ class RoomController extends Controller
         $inpatient->patient_id = Auth::user()->id;
         $inpatient->date_in = $request->date_in;
         $inpatient->date_out = Carbon::parse($request->date_in)->addDay()->toDateString();
+        $inpatient->status = 'in_progress';
         $inpatient->total_price = $room->price;
 
         // dd($inpatient);

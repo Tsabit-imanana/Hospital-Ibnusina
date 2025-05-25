@@ -12,6 +12,7 @@ class CreateHospitalCostsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id'); // foreign key referencing the patients table
             $table->string('health_patient'); // for health services like X-ray, CT scan, etc.
+            $table->string('status');
             $table->decimal('amount', 15, 2); // for the cost of services
             $table->timestamps(); // for created_at and updated_at
 

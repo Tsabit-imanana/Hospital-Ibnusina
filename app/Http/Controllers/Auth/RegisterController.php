@@ -32,7 +32,7 @@ class RegisterController extends Controller
             'address' => $request->address,
             'gender' => $request->gender,
             'username' => $request->username,
-            'password' => bcrypt($request->password)
+            'password' => $request->password
         ]);
 
         $patient->assignRole('patient');
@@ -40,7 +40,7 @@ class RegisterController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::guard('patient')->attempt($credentials)) {
-            return redirect()->intended('/profile');
+            return redirect()->intended('login');
         }
 
         return redirect()->route('login');

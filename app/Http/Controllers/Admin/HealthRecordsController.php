@@ -43,6 +43,7 @@ class HealthRecordsController extends Controller
         $healthRecords->room_id = $request->room_id;
         $healthRecords->check_ups = $records;
         $healthRecords->total_price = $totalPrice;
+        $healthRecords->status = "in_progress";
         // dd($healthRecords);
         $healthRecords->save();
 
@@ -77,6 +78,7 @@ class HealthRecordsController extends Controller
         $healthRecords = HealthRecords::find($id);
         $healthRecords->check_ups = $records;
         $healthRecords->total_price = $totalPrice;
+        $healthRecords->status = $request->status;
         $healthRecords->save();
 
         return redirect()->route('admin.health-record.index');

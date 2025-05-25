@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('patient_id')->constrained('patients');
             $table->date('date_in');
             $table->date('date_out');
+            $table->string('status');
             $table->date('total_price');
             $table->timestamps();
         });

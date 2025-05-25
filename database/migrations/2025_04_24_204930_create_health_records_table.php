@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained('rooms');
             $table->foreignId('patient_id')->constrained('patients');
             $table->json('check_ups');
+            $table->string('status');
             $table->decimal('total_price', 10, 2);
             $table->timestamps();
         });

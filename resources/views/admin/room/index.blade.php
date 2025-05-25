@@ -50,7 +50,7 @@
                                                 @if ($room->status == 'available')
                                                     <span class="badge badge-complete">{{ $room->status }}</span>
                                                 @elseif ($room->status == 'notavailable')
-                                                    <span class="badge badge-danger" style="background-color: red;">{{ $room->status }}</span>
+                                                    <span class="badge badge-danger">{{ $room->status }}</span>
                                                 @endif
                                             </td>
                                             <td>

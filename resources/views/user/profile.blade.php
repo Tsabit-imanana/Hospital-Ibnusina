@@ -1,6 +1,27 @@
 @extends('user.layouts.index')
 @section('title', 'Profile')
 @section('container')
+<style>
+        /* Memberikan background biru pada halaman */
+    
+
+        /* Membuat main-panel fullheight */
+        .main-panel {
+            background-color: #ffffff; /* Latar belakang putih untuk main-panel */
+            height: 100vh; /* Membuat elemen main-panel mengambil 100% dari tinggi layar */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Memberikan style untuk area content-wrapper */
+        .content-wrapper {
+            flex-grow: 1; /* Membuat konten panel mengambil sisa ruang yang tersedia */
+            padding: 20px;
+        }
+
+        /* Style tambahan untuk header jika diperlukan */
+        
+    </style>
     <div class="page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -92,10 +113,6 @@
                             </div>
                         </div>
                     </div>
-                    <footer class="footer">
-                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        </div>
-                    </footer>
                 </div>
             </div>
         </div>

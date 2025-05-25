@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\HospitalCost;
+use App\Models\HealthRecords;
 
 
 class HospitalCostController extends Controller
@@ -15,10 +16,11 @@ class HospitalCostController extends Controller
      */
     public function index()
     {
-        // Ambil semua data hospital costs yang ada di database
-        $hospitalCosts = HospitalCost::with('patient')->get(); // Mengambil data hospital cost beserta relasi pasiennya
-        return view('admin.hospital-cost.index', compact('hospitalCosts'));
+        $health_records = HealthRecords::with(['patient', 'room'])->get();
+
+        return view('admin.hospital-cost.index', compact('health_records'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -50,6 +52,7 @@ class HospitalCostController extends Controller
         $hospitalCost->patient_id = $request->input('patient_id');
         $hospitalCost->health_patient = $request->input('health_patient');
         $hospitalCost->amount = $request->input('amount');
+        $hospitalCost->status = "unpaid";
         $hospitalCost->save();
 
         // Redirect atau return response sesuai kebutuhan

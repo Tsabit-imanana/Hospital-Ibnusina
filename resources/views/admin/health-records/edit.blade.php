@@ -25,6 +25,14 @@
                                     <option selected disabled>{{ $health_record_data->room->type }}</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="in_progress" {{ $health_record_data->status === 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                                    <option value="completed" {{ $health_record_data->status === 'completed' ? 'selected' : '' }}>Completed</option>
+                                </select>
+                            </div>
+
                             <div id="records-wrapper">
                                 <div class="row">
                                     <div class="col-md-4">

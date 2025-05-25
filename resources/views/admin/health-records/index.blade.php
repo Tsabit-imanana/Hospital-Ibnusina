@@ -6,20 +6,22 @@
             <div class="clearfix"></div>
             <div class="col-xl-20">
                 <div class="card">
-                <div class="card-body d-flex justify-content-between align-items-center">
-    <h4 class="box-title mb-0">Health Records</h4>
-    <div class="d-flex align-items-center" style="gap: 10px;">
-        <form action="{{ route('admin.health-record.index') }}" method="GET" class="d-flex">
-            <input type="text" name="search" class="form-control form-control-sm" placeholder="Search..." value="{{ request('search') }}">
-            <button type="submit" class="btn btn-sm btn-primary ms-2">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-        <a href="{{ route('admin.health-record.create') }}" type="button" class="btn btn-sm btn-success">
-            <i class="fa fa-plus"></i> Add
-        </a>
-    </div>
-</div>
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h4 class="box-title mb-0">Health Records</h4>
+                        <div class="d-flex align-items-center" style="gap: 10px;">
+                            <form action="{{ route('admin.health-record.index') }}" method="GET" class="d-flex">
+                                <input type="text" name="search" class="form-control form-control-sm"
+                                    placeholder="Search..." value="{{ request('search') }}">
+                                <button type="submit" class="btn btn-sm btn-primary ms-2">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                            <a href="{{ route('admin.health-record.create') }}" type="button"
+                                class="btn btn-sm btn-success">
+                                <i class="fa fa-plus"></i> Add
+                            </a>
+                        </div>
+                    </div>
 
 
                     <div class="card-body">
@@ -32,6 +34,7 @@
                                         <th>Room Type</th>
                                         <th>Health Records</th>
                                         <th>Total Price</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -44,6 +47,14 @@
                                             <td> {{ $item->room->type }} </td>
                                             <td> {{ implode(separator: ', ', array: array_keys($item->check_ups, true)) }} </td>
                                             <td> Rp {{ $item->totalPriceFormat() }} </td>
+                                            <td>
+                                                @if($item->status === 'in_progress')
+                                                    <span class="badge bg-warning text-dark">In Progress</span>
+                                                @elseif($item->status === 'completed')
+                                                    <span class="badge bg-success">Completed</span>
+
+                                                @endif
+                                            </td>
                                             <td>
                                                 <button onclick="deleteHealthRecord({{ $item->id }})" type="button"
                                                     class="btn btn-danger">
@@ -73,13 +84,13 @@
                 }
 
                 fetch(`/admin/health-records/destroy/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }
-                    })
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                })
                     .then(response => {
                         if (response.ok) {
                             alert("Deleted successfully!");
