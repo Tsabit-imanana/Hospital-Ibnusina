@@ -141,6 +141,8 @@ Route::middleware(['auth:admin', 'role:admin'])->prefix('admin')->as('admin.')->
     Route::post('/hospital-cost/edit/{id}', [HospitalCostController::class, 'edit'])->name('hospital-cost.edit');
     Route::post('/hospital-cost/update/{id}', [HospitalCostController::class, 'update'])->name('hospital-cost.update');
     Route::post('/hospital-cost/destroy/{id}', [HospitalCostController::class, 'destroy'])->name('hospital-cost.destroy');
+    Route::post('admin/hospital-cost/{id}/mark-paid', [HospitalCostController::class, 'markPaid'])->name('hospital-cost.markPaid');
+
 });
 
 Route::middleware(['auth.session'])->group(function () {

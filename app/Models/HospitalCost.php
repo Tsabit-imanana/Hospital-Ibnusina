@@ -17,6 +17,7 @@ class HospitalCost extends Model
         'patient_id', 
         'health_patient', 
         'amount',
+        'status'
     ];
 
     /**
