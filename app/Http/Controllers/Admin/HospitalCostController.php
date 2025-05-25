@@ -19,7 +19,6 @@ class HospitalCostController extends Controller
 public function index()
 {
     $hospitalCosts = HospitalCost::with('patient')->get();
-
     foreach ($hospitalCosts as $cost) {
         // Ambil inpatient terakhir berdasarkan patient_id
         $inpatient = Inpatient::where('patient_id', $cost->patient_id)->latest()->first();
@@ -52,6 +51,7 @@ public function index()
         // Ambil status dari HospitalCost (bukan dari health record)
         $cost->status_from_health_record = $cost->status;
     }
+
 
     return view('admin.hospital-cost.index', compact('hospitalCosts'));
 }

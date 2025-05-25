@@ -15,6 +15,10 @@
                                 placeholder="Search patient..." value="{{ request('search') }}">
                             <button type="submit" class="btn btn-sm btn-primary ms-2"><i class="fa fa-search"></i></button>
                         </form>
+                                                    <a href="{{ route('admin.hospital-cost.create') }}" type="button"
+                                class="btn btn-sm btn-success">
+                                <i class="fa fa-plus"></i> Add
+                            </a>
                     </div>
                 </div>
 
